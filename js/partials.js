@@ -1,136 +1,23 @@
-/* GKMRHK - Shared HTML Partials */
 (function(){
-  const NAVBAR_HTML = `
-  <nav class="navbar navbar-expand-lg" id="main-navbar">
-    <div class="container">
-      <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-        <img src="images/cropped-logo.png"
-             onerror="this.style.display='none'"
-             alt="GKMRHK Logo" height="48">
-        <div class="brand-text">
-          <span class="brand-name">GKMRHK</span>
-          <span class="brand-sub">South Shields</span>
-        </div>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navMenu">
-        <ul class="navbar-nav ms-auto align-items-lg-center">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="weekly-routine.html">Weekly Routine</a></li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Media</a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="media.html"><i class="fas fa-share-alt me-2 opacity-50"></i>Social Media</a></li>
-              <li><a class="dropdown-item" href="highlights.html"><i class="fas fa-star me-2 opacity-50"></i>Highlights</a></li>
-              <li><hr class="dropdown-divider" style="border-color:rgba(200,146,42,0.2);margin:0.3rem 0"></li>
-              <li><a class="dropdown-item" href="kirtan-tutorials.html"><i class="fas fa-music me-2 opacity-50"></i>Kirtan Tutorials</a></li>
-              <li><a class="dropdown-item" href="katha-wednesday.html"><i class="fas fa-video me-2 opacity-50"></i>Katha Wednesday</a></li>
-              <li><a class="dropdown-item" href="raag-monday.html"><i class="fas fa-headphones me-2 opacity-50"></i>Raag Monday</a></li>
-              <li><a class="dropdown-item" href="sikh-history-tuesdays.html"><i class="fas fa-book me-2 opacity-50"></i>Sikh History Tuesdays</a></li>
-              <li><a class="dropdown-item" href="gkmrhk-sangat-katha.html"><i class="fas fa-microphone me-2 opacity-50"></i>Sangat Katha</a></li>
-            </ul>
-          </li>
-          <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>`;
+  var CDN = 'https://cdn.jsdelivr.net/gh/inderbirsingh97/gkmrhk-assets@main';
 
-  const FOOTER_HTML = `
-  <footer id="main-footer">
-    <div class="container">
-      <div class="row g-5">
-        <div class="col-lg-4">
-          <div class="footer-brand">
-            <span class="brand-name">Gurdwara Khalsa<br>Mero Roop Hai Khas</span>
-            <p>ਖ਼ਾਲਸਾ ਮੇਰੋ ਰੂਪ ਹੈ ਖ਼ਾਸ</p>
-          </div>
-          <address>
-            West Way<br>
-            South Shields<br>
-            NE33 4SR<br>
-            Tyne &amp; Wear
-          </address>
-          <div class="footer-social mt-3">
-            <a href="https://www.facebook.com/GKMRHKSS/" target="_blank" rel="noopener" title="Facebook">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://www.instagram.com/gkmrhk/" target="_blank" rel="noopener" title="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
-            <a href="https://www.youtube.com/user/GKMRHK" target="_blank" rel="noopener" title="YouTube">
-              <i class="fab fa-youtube"></i>
-            </a>
-            <a href="https://soundcloud.com/gkmrhk" target="_blank" rel="noopener" title="SoundCloud">
-              <i class="fab fa-soundcloud"></i>
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-6 col-lg-2">
-          <div class="footer-heading">Navigate</div>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="weekly-routine.html">Weekly Routine</a></li>
-            <li><a href="resources.html">Resources</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div class="col-sm-6 col-lg-3">
-          <div class="footer-heading">Media</div>
-          <ul class="footer-links">
-            <li><a href="media.html">Social Media</a></li>
-            <li><a href="highlights.html">Highlights</a></li>
-            <li><a href="kirtan-tutorials.html">Kirtan Tutorials</a></li>
-            <li><a href="katha-wednesday.html">Katha Wednesday</a></li>
-            <li><a href="raag-monday.html">Raag Monday</a></li>
-            <li><a href="sikh-history-tuesdays.html">Sikh History Tuesdays</a></li>
-            <li><a href="gkmrhk-sangat-katha.html">Sangat Katha</a></li>
-          </ul>
-        </div>
-        <div class="col-lg-3">
-          <div class="footer-heading">Weekly Divans</div>
-          <ul class="footer-links">
-            <li><i class="fas fa-calendar-alt me-2 text-gold"></i>Wednesday: 7pm – 8:30pm</li>
-            <li><i class="fas fa-calendar-alt me-2 text-gold"></i>Saturday: 7pm – 9pm</li>
-          </ul>
-          <div class="mt-3">
-            <div class="footer-heading">Morning Programme</div>
-            <ul class="footer-links">
-              <li>4am – Ramalla &amp; Shastar Seva</li>
-              <li>5am – Nitnem</li>
-              <li>6am – Asa Di Vaar</li>
-              <li>8am – Sehaj Katha</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <p>&copy; ${new Date().getFullYear()} Gurdwara Khalsa Mero Roop Hai Khas, South Shields. All rights reserved.</p>
-        <p style="margin-top:0.25rem;font-size:0.75rem;opacity:0.6;">ਵਾਹਿਗੁਰੂ ਜੀ ਕਾ ਖ਼ਾਲਸਾ, ਵਾਹਿਗੁਰੂ ਜੀ ਕੀ ਫ਼ਤਿਹ!</p>
-      </div>
-    </div>
-  </footer>`;
+  var NAVBAR_HTML = '<nav class="navbar navbar-expand-lg" id="main-navbar"><div class="container"><a class="navbar-brand d-flex align-items-center gap-2" href="/"><img src="' + CDN + '/images/logo.png" alt="GKMRHK Logo" height="48"><div class="brand-text"><span class="brand-name">GKMRHK</span><span class="brand-sub">South Shields</span></div></a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navMenu"><ul class="navbar-nav ms-auto align-items-lg-center"><li class="nav-item"><a class="nav-link" href="/">Home</a></li><li class="nav-item"><a class="nav-link" href="/weekly-routine">Weekly Routine</a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Media</a><ul class="dropdown-menu"><li><a class="dropdown-item" href="/social-media"><i class="fas fa-share-alt me-2 opacity-50"></i>Social Media</a></li><li><a class="dropdown-item" href="/highlights"><i class="fas fa-star me-2 opacity-50"></i>Highlights</a></li><li><hr class="dropdown-divider" style="border-color:rgba(200,146,42,0.2);margin:0.3rem 0"></li><li><a class="dropdown-item" href="/kirtan-tutorials"><i class="fas fa-music me-2 opacity-50"></i>Kirtan Tutorials</a></li><li><a class="dropdown-item" href="/katha-wednesday"><i class="fas fa-video me-2 opacity-50"></i>Katha Wednesday</a></li><li><a class="dropdown-item" href="/raag-monday"><i class="fas fa-headphones me-2 opacity-50"></i>Raag Monday</a></li><li><a class="dropdown-item" href="/sikh-history-tuesdays"><i class="fas fa-book me-2 opacity-50"></i>Sikh History Tuesdays</a></li><li><a class="dropdown-item" href="/sangat-katha"><i class="fas fa-microphone me-2 opacity-50"></i>Sangat Katha</a></li></ul></li><li class="nav-item"><a class="nav-link" href="/resources">Resources</a></li><li class="nav-item"><a class="nav-link" href="/school-tours">School Tours</a></li><li class="nav-item"><a class="nav-link" href="/contact-us">Contact</a></li></ul></div></div></nav>';
 
-  // Inject navbar
-  const navTarget = document.getElementById('navbar-placeholder');
+  var FOOTER_HTML = '<footer id="main-footer"><div class="container"><div class="row g-5"><div class="col-lg-4"><div class="footer-brand"><span class="brand-name">Gurdwara Khalsa<br>Mero Roop Hai Khas</span><p>ਖ਼ਾਲਸਾ ਮੇਰੋ ਰੂਪ ਹੈ ਖ਼ਾਸ</p></div><address>West Way<br>South Shields<br>NE33 4SR<br>Tyne &amp; Wear</address><div class="footer-social mt-3"><a href="https://www.facebook.com/GKMRHKSS/" target="_blank" rel="noopener" title="Facebook"><i class="fab fa-facebook-f"></i></a><a href="https://www.instagram.com/gkmrhk/" target="_blank" rel="noopener" title="Instagram"><i class="fab fa-instagram"></i></a><a href="https://www.youtube.com/user/GKMRHK" target="_blank" rel="noopener" title="YouTube"><i class="fab fa-youtube"></i></a><a href="https://soundcloud.com/gkmrhk" target="_blank" rel="noopener" title="SoundCloud"><i class="fab fa-soundcloud"></i></a></div></div><div class="col-sm-6 col-lg-2"><div class="footer-heading">Navigate</div><ul class="footer-links"><li><a href="/">Home</a></li><li><a href="/weekly-routine">Weekly Routine</a></li><li><a href="/resources">Resources</a></li><li><a href="/school-tours">School Tours</a></li><li><a href="/contact-us">Contact</a></li></ul></div><div class="col-sm-6 col-lg-3"><div class="footer-heading">Media</div><ul class="footer-links"><li><a href="/social-media">Social Media</a></li><li><a href="/highlights">Highlights</a></li><li><a href="/kirtan-tutorials">Kirtan Tutorials</a></li><li><a href="/katha-wednesday">Katha Wednesday</a></li><li><a href="/raag-monday">Raag Monday</a></li><li><a href="/sikh-history-tuesdays">Sikh History Tuesdays</a></li><li><a href="/sangat-katha">Sangat Katha</a></li></ul></div><div class="col-lg-3"><div class="footer-heading">Weekly Divans</div><ul class="footer-links"><li><i class="fas fa-calendar-alt me-2 text-gold"></i>Wednesday: 7pm - 8:30pm</li><li><i class="fas fa-calendar-alt me-2 text-gold"></i>Saturday: 7pm - 9pm</li></ul><div class="mt-3"><div class="footer-heading">Morning Programme</div><ul class="footer-links"><li>4am - Ramalla &amp; Shastar Seva</li><li>5am - Nitnem</li><li>6am - Asa Di Vaar</li><li>8am - Sehaj Katha</li></ul></div></div></div></div><div class="footer-bottom"><div class="container"><p>&copy; 2025 Gurdwara Khalsa Mero Roop Hai Khas, South Shields. All rights reserved.</p><p style="margin-top:0.25rem;font-size:0.75rem;opacity:0.6;">ਵਾਹਿਗੁਰੂ ਜੀ ਕਾ ਖ਼ਾਲਸਾ, ਵਾਹਿਗੁਰੂ ਜੀ ਕੀ ਫ਼ਤਿਹ!</p></div></div></footer>';
+
+  var navTarget = document.getElementById('navbar-placeholder');
   if (navTarget) navTarget.innerHTML = NAVBAR_HTML;
 
-  // Inject footer
-  const footTarget = document.getElementById('footer-placeholder');
+  var footTarget = document.getElementById('footer-placeholder');
   if (footTarget) footTarget.innerHTML = FOOTER_HTML;
 
-  // Highlight current page
-  setTimeout(() => {
-    const current = window.location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('#main-navbar .nav-link, #main-navbar .dropdown-item').forEach(link => {
-      if (link.getAttribute('href') === current) {
+  setTimeout(function() {
+    var current = window.location.pathname.replace(/\/$/, '') || '/';
+    document.querySelectorAll('#main-navbar .nav-link, #main-navbar .dropdown-item').forEach(function(link) {
+      var href = (link.getAttribute('href') || '').replace(/\/$/, '');
+      if (href && href === current) {
         link.classList.add('active');
-        const dd = link.closest('.dropdown');
+        var dd = link.closest('.dropdown');
         if (dd) dd.querySelector('.nav-link').classList.add('active');
       }
     });

@@ -1,0 +1,2716 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+<meta name="description" content="SimpleDash - One AI-powered dashboard connecting Xero, Shopify, Meta Ads and 60+ tools. Live in 14 days from &pound;2,997.">
+<meta property="og:title" content="SimpleDash - Every part of your business, one screen">
+<meta property="og:description" content="Custom AI dashboard built for your business. Live in 14 days or money back.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://simpledash.co.uk">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://simpledash.co.uk/">
+<title>SimpleDash - Every part of your business, one screen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SimpleDash","description":"AI-powered business dashboard built in 14 days.","url":"https://simpledash.co.uk","offers":{"@type":"Offer","price":"2997","priceCurrency":"GBP"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5","reviewCount":"3"}}
+</script>
+<style>
+/* ===== SHARED TOKENS ===== */
+:root{
+  --ff:'DM Sans',system-ui,sans-serif;
+  --fs:'DM Serif Display',Georgia,serif;
+  --fm:'DM Mono',monospace;
+  --s-bg:#F5F3EE;--s-sur:#FFFFFF;--s-s2:#EDEAE3;--s-s3:#D8D4CC;
+  --s-ink:#1A1410;--s-ink2:#54504A;--s-ink3:#9A9490;
+  --s-ac:#C8421A;--s-ac2:#A33412;
+  --s-gn:#2A7530;--s-gnbg:#E8F5E9;
+  --s-rd:#BF2F1C;--s-rdbg:#FDECEA;
+  --s-bdr:rgba(20,15,8,.10);--s-bdr2:rgba(20,15,8,.20);
+  --s-r:10px;--s-rl:14px;--s-rx:18px;--mx:1140px;
+  /* Dashboard tokens */
+  --bg:#F3F1EC;--sur:#FFFFFF;--s2:#EDEAE3;--s3:#E2DED6;
+  --bdr:rgba(20,15,8,.10);--bdr2:rgba(20,15,8,.20);
+  --ink:#1C1610;--ink2:#58524A;--ink3:#9A9288;
+  --ac:#C8421A;--ac2:#A33412;--acbg:rgba(200,66,26,.08);
+  --gn:#2A7530;--gnbg:#E8F5E9;
+  --rd:#BF2F1C;--rdbg:#FDECEA;
+  --am:#87590A;--ambg:#FEF3DC;
+  --bl:#1456A0;--blbg:#E6F0FB;
+  --sh:0 1px 3px rgba(0,0,0,.07),0 1px 2px rgba(0,0,0,.04);
+  --shm:0 4px 18px rgba(0,0,0,.10),0 2px 5px rgba(0,0,0,.05);
+  --r:10px;--rl:14px;--rx:18px;--hh:54px;--dmx:1320px;
+}
+[data-theme=dark]{
+  --s-bg:#0E0D0B;--s-sur:#191714;--s-s2:#221F1B;--s-s3:#2B2823;
+  --s-ink:#F0EDE6;--s-ink2:#9E968C;--s-ink3:#625C54;
+  --s-bdr:rgba(255,250,240,.09);--s-bdr2:rgba(255,250,240,.19);
+  --bg:#0E0D0B;--sur:#191714;--s2:#221F1B;--s3:#2B2823;
+  --bdr:rgba(255,250,240,.09);--bdr2:rgba(255,250,240,.19);
+  --ink:#F0EDE6;--ink2:#9E968C;--ink3:#625C54;
+  --ac:#DE5A28;--ac2:#F07040;--acbg:rgba(222,90,40,.12);
+  --gn:#50C060;--gnbg:rgba(80,192,96,.12);
+  --rd:#F05050;--rdbg:rgba(240,80,80,.12);
+  --am:#FFB84A;--ambg:rgba(255,184,74,.12);
+  --bl:#5AADFF;--blbg:rgba(90,173,255,.12);
+  --sh:0 1px 4px rgba(0,0,0,.4);--shm:0 4px 22px rgba(0,0,0,.55);
+}
+body.hc{--bdr:rgba(20,15,8,.28);--bdr2:rgba(20,15,8,.52);--ink2:#3A3028;--ink3:#6A6258}
+[data-theme=dark] body.hc{--bdr:rgba(255,250,240,.26);--bdr2:rgba(255,250,240,.48);--ink2:#C8C0B4;--ink3:#908880}
+body.nomotion *,body.nomotion *::before,body.nomotion *::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+body.bigtxt .mv{font-size:22px!important}body.bigtxt .ai-txt,body.bigtxt td,body.bigtxt .su-tx{font-size:14px!important}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{font-family:var(--ff);line-height:1.5;-webkit-font-smoothing:antialiased;background:var(--s-bg);color:var(--s-ink)}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:var(--ff);cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--s-ac);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;top:-100px;left:8px;background:var(--s-ac);color:#fff;padding:8px 16px;border-radius:var(--s-r);font-size:14px;font-weight:600;z-index:9999;text-decoration:none;transition:top .15s}
+.skip:focus{top:8px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes popIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+@keyframes slideIn{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+@keyframes drawerIn{from{transform:translateX(100%)}to{transform:translateX(0)}}
+@keyframes dropIn{from{opacity:0;transform:translateY(-6px) scale(.98)}to{opacity:1;transform:none}}
+
+/* ===== SCROLL PROGRESS ===== */
+#scroll-prog{position:fixed;top:0;left:0;height:2px;background:var(--s-ac);z-index:9999;width:0%;pointer-events:none;transition:width .1s linear}
+
+/* ===== SITE NAV ===== */
+.site-nav{position:sticky;top:0;z-index:200;background:rgba(245,243,238,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(20,15,8,.08)}
+[data-theme=dark] .site-nav{background:rgba(14,13,11,.93);border-bottom-color:rgba(255,250,240,.08)}
+.site-nav-in{max-width:var(--mx);margin:0 auto;padding:0 24px;height:60px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.site-logo{font-size:16px;font-weight:700;letter-spacing:-.03em;flex-shrink:0;color:var(--s-ink)}
+.site-logo em{color:var(--s-ac);font-style:normal}
+.site-links{display:flex;align-items:center;gap:24px;list-style:none}
+.site-links a{font-size:14px;color:var(--s-ink2);transition:color .15s}
+.site-links a:hover{color:var(--s-ink)}
+.snav-r{display:flex;align-items:center;gap:8px}
+.snav-cta{background:var(--s-ac);color:#fff;padding:9px 20px;border-radius:var(--s-r);font-size:14px;font-weight:600;border:none;white-space:nowrap;transition:all .15s}
+.snav-cta:hover{background:var(--s-ac2);transform:translateY(-1px);box-shadow:0 4px 12px rgba(200,66,26,.3)}
+.snav-icon{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:var(--s-r);border:1px solid var(--s-bdr);background:transparent;color:var(--s-ink2);transition:all .12s;flex-shrink:0}
+.snav-icon:hover{background:var(--s-s2);border-color:var(--s-bdr2);color:var(--s-ink)}
+.snav-icon svg{width:16px;height:16px;stroke:currentColor;fill:none}
+.snav-mob{display:none}
+/* Mobile nav drawer */
+.mob-nav-ov{display:none;position:fixed;inset:0;z-index:300}
+.mob-nav-ov.open{display:block}
+.mob-nav-scrim{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.mob-nav-drawer{position:absolute;top:0;right:0;width:min(300px,85vw);height:100%;background:var(--s-sur);display:flex;flex-direction:column;animation:drawerIn .2s ease;box-shadow:-4px 0 20px rgba(0,0,0,.15)}
+[data-theme=dark] .mob-nav-drawer{background:var(--sur)}
+.mob-nav-head{padding:16px 18px;border-bottom:1px solid var(--s-bdr);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.mob-nav-logo{font-size:15px;font-weight:700;color:var(--s-ink);letter-spacing:-.02em}
+.mob-nav-logo em{color:var(--s-ac);font-style:normal}
+.mob-nav-x{background:transparent;border:1px solid var(--s-bdr);border-radius:6px;width:28px;height:28px;color:var(--s-ink2);cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center}
+.mob-nav-links{padding:10px 12px;flex:1;overflow-y:auto}
+.mob-nav-link{display:block;padding:13px 12px;border-radius:var(--s-r);font-size:14.5px;font-weight:500;color:var(--s-ink);transition:background .12s;margin-bottom:2px}
+[data-theme=dark] .mob-nav-link{color:var(--ink)}
+.mob-nav-link:hover{background:var(--s-s2)}
+.mob-nav-foot{padding:14px 16px;border-top:1px solid var(--s-bdr);flex-shrink:0}
+.mob-nav-cta{display:block;background:var(--s-ac);color:#fff;text-align:center;padding:14px;border-radius:var(--s-r);font-size:15px;font-weight:600;margin-bottom:10px;border:none;width:100%;cursor:pointer;font-family:var(--ff)}
+.mob-nav-cta:hover{background:var(--s-ac2)}
+.mob-nav-dark{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:var(--s-r);font-size:13px;color:var(--s-ink2);background:transparent;border:none;width:100%;cursor:pointer;font-family:var(--ff);transition:background .12s}
+.mob-nav-dark:hover{background:var(--s-s2)}
+
+/* ===== BOOKING MODAL ===== */
+.booking-modal{display:none;position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.5);align-items:center;justify-content:center;padding:16px}
+.booking-modal.open{display:flex}
+.bm-box{background:var(--s-sur);border-radius:18px;padding:32px;width:min(480px,100%);position:relative;animation:popIn .18s ease;max-height:90vh;overflow-y:auto}
+[data-theme=dark] .bm-box{background:var(--sur)}
+.bm-close{position:absolute;top:14px;right:14px;background:transparent;border:none;font-size:22px;cursor:pointer;color:var(--s-ink2);padding:4px 8px;border-radius:6px;line-height:1}
+.bm-close:hover{background:var(--s-s2)}
+.bm-title{font-family:var(--fs);font-size:1.7rem;font-weight:400;color:var(--s-ink);margin-bottom:6px}
+[data-theme=dark] .bm-title{color:var(--ink)}
+.bm-sub{font-size:14px;color:var(--s-ink2);margin-bottom:22px;line-height:1.65}
+[data-theme=dark] .bm-sub{color:var(--ink2)}
+.bm-form{display:flex;flex-direction:column;gap:13px}
+.bm-label{font-size:13px;font-weight:500;color:var(--s-ink);display:block;margin-bottom:4px}
+[data-theme=dark] .bm-label{color:var(--ink)}
+.bm-input,.bm-select,.bm-textarea{padding:10px 13px;border-radius:var(--s-r);border:1px solid var(--s-bdr2);background:var(--s-sur);color:var(--s-ink);font-size:14px;font-family:var(--ff);width:100%;transition:border-color .12s}
+[data-theme=dark] .bm-input,[data-theme=dark] .bm-select,[data-theme=dark] .bm-textarea{background:var(--s2);border-color:var(--bdr2);color:var(--ink)}
+.bm-input:focus,.bm-select:focus,.bm-textarea:focus{outline:none;border-color:var(--s-ac)}
+.bm-textarea{resize:vertical;min-height:80px}
+.bm-submit{background:var(--s-ac);color:#fff;padding:13px;border-radius:var(--s-r);font-size:15px;font-weight:600;border:none;width:100%;transition:all .15s;margin-top:4px}
+.bm-submit:hover{background:var(--s-ac2);transform:translateY(-1px)}
+.bm-note{font-size:12px;color:var(--s-ink3);text-align:center;margin-top:8px}
+[data-theme=dark] .bm-note{color:var(--ink3)}
+.bm-success{display:none;text-align:center;padding:16px 0}
+.bm-success.show{display:block}
+.bm-success-icon{font-size:48px;margin-bottom:14px}
+.bm-success h3{font-size:18px;font-weight:600;color:var(--s-ink);margin-bottom:8px}
+[data-theme=dark] .bm-success h3{color:var(--ink)}
+.bm-success p{font-size:14px;color:var(--s-ink2);line-height:1.65}
+[data-theme=dark] .bm-success p{color:var(--ink2)}
+
+/* ===== HERO ===== */
+.hero{max-width:var(--mx);margin:0 auto;padding:80px 24px 0;text-align:center}
+.hero-pill{display:inline-flex;align-items:center;gap:7px;background:var(--s-sur);border:1px solid var(--s-bdr);border-radius:20px;padding:6px 14px;font-size:13px;color:var(--s-ink2);margin-bottom:28px}
+.hero-dot{width:6px;height:6px;border-radius:50%;background:var(--s-gn);animation:blink 2.5s ease-in-out infinite}
+.hero h1{font-family:var(--fs);font-size:clamp(2.5rem,5.5vw,4.1rem);font-weight:400;line-height:1.11;letter-spacing:-.02em;color:var(--s-ink);margin-bottom:22px}
+.hero h1 em{color:var(--s-ac);font-style:italic}
+.hero-sub{font-size:clamp(.95rem,2vw,1.1rem);color:var(--s-ink2);max-width:580px;margin:0 auto 36px;line-height:1.75}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
+.btn-primary{background:var(--s-ac);color:#fff;padding:14px 28px;border-radius:var(--s-r);font-size:15px;font-weight:600;border:none;transition:all .15s;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn-primary:hover{background:var(--s-ac2);transform:translateY(-1px);box-shadow:0 6px 16px rgba(200,66,26,.3)}
+.btn-secondary{background:var(--s-sur);color:var(--s-ink);padding:14px 28px;border-radius:var(--s-r);font-size:15px;font-weight:500;border:1px solid var(--s-bdr2);transition:all .15s;cursor:pointer}
+.btn-secondary:hover{border-color:var(--s-bdr2);background:var(--s-s2)}
+.hero-trust{display:flex;align-items:center;justify-content:center;gap:20px;font-size:13px;color:var(--s-ink3);flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:5px}
+.trust-tick{color:var(--s-gn);font-weight:700}
+
+/* ===== STATS ===== */
+.stats-band{max-width:var(--mx);margin:52px auto 0;padding:0 24px}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);background:var(--s-sur);border:1px solid var(--s-bdr);border-radius:var(--s-rl,14px);overflow:hidden}
+.stat-cell{padding:26px 22px;text-align:center;border-right:1px solid var(--s-bdr)}
+.stat-cell:last-child{border-right:none}
+.stat-n{font-size:2.1rem;font-weight:700;color:var(--s-ac);letter-spacing:-.03em;line-height:1}
+.stat-l{font-size:13px;color:var(--s-ink2);margin-top:5px;line-height:1.4}
+
+/* ===== PERSONA + DEMO ===== */
+.persona-band{max-width:var(--mx);margin:72px auto 0;padding:0 24px}
+.section-eyebrow{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--s-ac);margin-bottom:12px}
+.section-h{font-family:var(--fs);font-size:clamp(1.7rem,3.5vw,2.6rem);font-weight:400;color:var(--s-ink);margin-bottom:14px;line-height:1.18}
+.section-h em{color:var(--s-ac);font-style:italic}
+.section-sub{font-size:15px;color:var(--s-ink2);max-width:560px;margin-bottom:0;line-height:1.75}
+.persona-label{text-align:center;margin-bottom:28px}
+.persona-label .section-sub{max-width:540px;margin:0 auto}
+.persona-tabs{display:flex;gap:8px;justify-content:center;margin:20px 0 8px;flex-wrap:wrap}
+.ptab{display:flex;align-items:center;gap:8px;padding:10px 20px;border-radius:var(--s-r);border:1.5px solid var(--s-bdr);background:var(--s-sur);color:var(--s-ink2);font-size:14px;font-weight:500;transition:all .15s}
+.ptab:hover{border-color:var(--s-bdr2);color:var(--s-ink)}
+.ptab.on{background:var(--s-ac);color:#fff;border-color:var(--s-ac)}
+.ptab-ico{font-size:17px;line-height:1}
+.persona-hint{text-align:center;font-size:12px;color:var(--s-ink3);margin-bottom:14px;min-height:18px}
+/* Dashboard frame chrome */
+.dash-frame{border-radius:16px;overflow:hidden;box-shadow:0 8px 40px rgba(20,15,8,.12),0 2px 8px rgba(20,15,8,.06);border:1px solid var(--s-bdr2)}
+[data-theme=dark] .dash-frame{box-shadow:0 8px 40px rgba(0,0,0,.5);border-color:var(--bdr2)}
+.dash-chrome{background:#E4E1DA;padding:10px 14px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(20,15,8,.1);flex-shrink:0}
+[data-theme=dark] .dash-chrome{background:#2A2724;border-bottom-color:var(--bdr)}
+.dc-dots{display:flex;gap:5px}
+.dc-dot{width:11px;height:11px;border-radius:50%}
+.dc-url{flex:1;background:var(--s-sur);border-radius:6px;padding:4px 12px;font-size:11.5px;color:var(--s-ink3);font-family:var(--fm);text-align:center;max-width:340px;margin:0 auto}
+[data-theme=dark] .dc-url{background:var(--s2);color:var(--ink3)}
+.dash-caption{text-align:center;margin-top:14px;font-size:13px;color:var(--s-ink3)}
+.dash-caption button{background:none;border:none;color:var(--s-ac);font-weight:500;cursor:pointer;font-family:var(--ff);font-size:inherit;text-decoration:underline;text-underline-offset:2px;padding:0}
+.dash-caption button:hover{color:var(--s-ac2)}
+
+/* ===== FULLSCREEN OVERLAY ===== */
+.dash-fullscreen{display:none;position:fixed;inset:0;z-index:500;flex-direction:column;overflow:hidden}
+.dash-fullscreen.open{display:flex}
+.dash-fs-bar{background:var(--s-ac);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;flex-shrink:0;gap:12px;flex-wrap:wrap}
+.dash-fs-label{font-size:13px;font-weight:500;display:flex;align-items:center;gap:8px}
+.dash-fs-btns{display:flex;gap:8px;align-items:center}
+.dash-fs-cta{background:rgba(255,255,255,.2);color:#fff;border:1px solid rgba(255,255,255,.35);padding:7px 14px;border-radius:var(--s-r);font-size:13px;font-weight:600;cursor:pointer;font-family:var(--ff);white-space:nowrap}
+.dash-fs-cta:hover{background:rgba(255,255,255,.32)}
+.dash-fs-close{background:transparent;color:rgba(255,255,255,.8);border:none;font-size:24px;line-height:1;cursor:pointer;padding:2px 8px}
+.dash-fs-close:hover{color:#fff}
+.dash-fs-inner{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--bg)}
+
+/* ===== SITE SECTIONS ===== */
+.section{max-width:var(--mx);margin:80px auto 0;padding:0 24px}
+.prob-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.prob-card{background:var(--s-sur);border:1px solid var(--s-bdr);border-radius:var(--s-rl,14px);padding:22px}
+.prob-ico{width:36px;height:36px;border-radius:var(--s-r);background:var(--s-rdbg);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:14px}
+.prob-card h3{font-size:15px;font-weight:600;color:var(--s-ink);margin-bottom:8px}
+.prob-card p{font-size:14px;color:var(--s-ink2);line-height:1.65}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:44px}
+.step-card{background:var(--s-sur);border:1px solid var(--s-bdr);border-radius:var(--s-rl,14px);padding:22px;position:relative}
+.step-card.featured{border-color:var(--s-ac);background:rgba(200,66,26,.03)}
+.step-week{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--s-ink3);margin-bottom:8px}
+.step-card.featured .step-week{color:var(--s-ac)}
+.step-card h3{font-size:15px;font-weight:600;color:var(--s-ink);margin-bottom:6px}
+.step-card p{font-size:13.5px;color:var(--s-ink2);line-height:1.65}
+.step-live{position:absolute;top:14px;right:14px;background:var(--s-ac);color:#fff;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px}
+.int-wrap{margin-top:32px}
+.int-flex{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.int-pill{background:var(--s-sur);border:1px solid var(--s-bdr);border-radius:20px;padding:7px 14px;font-size:13px;color:var(--s-ink2);font-weight:500;transition:all .12s}
+.int-pill:hover{border-color:var(--s-bdr2);color:var(--s-ink)}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:44px}
+.compare-col{border-radius:var(--s-rl,14px);padding:26px;border:1px solid var(--s-bdr)}
+.compare-col.good{background:rgba(42,117,48,.04);border-color:rgba(42,117,48,.2)}
+.compare-head{font-size:15px;font-weight:600;color:var(--s-ink);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.ci{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--s-bdr);font-size:14px;color:var(--s-ink2);line-height:1.5}
+.ci:last-child{border-bottom:none}
+.ci-mark{flex-shrink:0;font-size:15px;margin-top:1px}
+
+/* Pricing */
+.price-outer{max-width:660px;margin:44px auto 0}
+.price-card{background:var(--s-sur);border:2px solid var(--s-ac);border-radius:18px;padding:34px;position:relative}
+.price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--s-ac),#F07040);border-radius:18px 18px 0 0}
+.price-tag{display:inline-block;background:var(--s-ac);color:#fff;font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;margin-bottom:16px}
+.price-num{font-size:3rem;font-weight:700;color:var(--s-ink);letter-spacing:-.04em;line-height:1}
+.price-desc{font-size:15px;color:var(--s-ink2);margin:6px 0 22px}
+.val-stack{background:var(--s-s2);border-radius:var(--s-rl,14px);padding:20px;margin-bottom:22px}
+.vs-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid var(--s-bdr);font-size:13.5px}
+.vs-row:last-child{border-bottom:none;padding-top:10px;font-weight:600;font-size:15px}
+.vs-lbl{color:var(--s-ink2)}
+.vs-p{color:var(--s-ink3);text-decoration:line-through;font-family:var(--fm);font-size:13px}
+.vs-row:last-child .vs-p{text-decoration:none;color:var(--s-ac);font-size:1.1rem;font-weight:700}
+.price-items{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:22px}
+.pi{display:flex;align-items:flex-start;gap:7px;font-size:13.5px;color:var(--s-ink2)}
+.pi-tick{color:var(--s-gn);font-weight:700;flex-shrink:0;margin-top:1px}
+.price-btn{display:block;background:var(--s-ac);color:#fff;text-align:center;padding:15px;border-radius:var(--s-r);font-size:16px;font-weight:600;transition:all .15s;border:none;width:100%;cursor:pointer;font-family:var(--ff);margin-bottom:12px}
+.price-btn:hover{background:var(--s-ac2);transform:translateY(-1px);box-shadow:0 6px 18px rgba(200,66,26,.3)}
+.price-guar{text-align:center;font-size:13px;color:var(--s-ink3);display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap}
+
+/* Testimonials */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+.testi{background:var(--s-sur);border:1px solid var(--s-bdr);border-radius:var(--s-rl,14px);padding:22px;display:flex;flex-direction:column}
+.testi-stars{color:var(--s-ac);font-size:15px;letter-spacing:2px;margin-bottom:12px}
+.testi-q{font-size:14px;color:var(--s-ink2);line-height:1.7;margin-bottom:16px;font-style:italic;flex:1}
+.testi-person{display:flex;align-items:center;gap:10px}
+.testi-av{width:34px;height:34px;border-radius:50%;background:var(--s-s2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;color:var(--s-ink2);flex-shrink:0}
+.testi-name{font-size:13px;font-weight:600;color:var(--s-ink)}
+.testi-role{font-size:12px;color:var(--s-ink3)}
+.testi-result{margin-top:14px;padding:9px 11px;background:var(--s-gnbg);border-radius:var(--s-r);font-size:13px;font-weight:600;color:var(--s-gn);display:flex;align-items:center;gap:6px}
+[data-theme=dark] .testi-result{background:rgba(80,192,96,.12)}
+
+/* FAQ */
+.faq-list{margin-top:40px;display:flex;flex-direction:column;gap:2px}
+.faq-item{background:var(--s-sur);border:1px solid var(--s-bdr);border-radius:var(--s-r);overflow:hidden}
+.faq-q{width:100%;text-align:left;padding:16px 18px;font-size:15px;font-weight:500;color:var(--s-ink);background:transparent;border:none;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;transition:background .12s;font-family:var(--ff)}
+.faq-q:hover,.faq-q.open{background:var(--s-s2)}
+.faq-chev{flex-shrink:0;transition:transform .2s;color:var(--s-ink3);font-size:18px;line-height:1}
+.faq-q.open .faq-chev{transform:rotate(180deg)}
+.faq-a{display:none;padding:0 18px 16px;font-size:14px;color:var(--s-ink2);line-height:1.75}
+.faq-a.open{display:block}
+
+/* CTA / Booking */
+.cta-section{max-width:var(--mx);margin:80px auto 0;padding:0 24px}
+.cta-box{background:var(--s-ink);color:#fff;border-radius:20px;padding:56px 48px;text-align:center;position:relative;overflow:hidden}
+[data-theme=dark] .cta-box{background:#1A1916}
+.cta-box::before{content:'';position:absolute;top:-60px;right:-60px;width:260px;height:260px;border-radius:50%;background:rgba(200,66,26,.18)}
+.cta-box::after{content:'';position:absolute;bottom:-80px;left:-40px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.03)}
+.cta-h{font-family:var(--fs);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:400;margin-bottom:14px;position:relative}
+.cta-h em{color:#F07040;font-style:italic}
+.cta-sub{font-size:16px;opacity:.75;max-width:480px;margin:0 auto 32px;position:relative;line-height:1.65}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;margin-bottom:18px}
+.btn-white{background:#fff;color:var(--s-ink);padding:14px 28px;border-radius:var(--s-r);font-size:15px;font-weight:600;border:none;transition:all .15s;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn-white:hover{background:#f0ede8;transform:translateY(-1px);box-shadow:0 6px 16px rgba(0,0,0,.2)}
+.btn-ghost{background:transparent;color:#fff;padding:14px 28px;border-radius:var(--s-r);font-size:15px;font-weight:500;border:1px solid rgba(255,255,255,.3);transition:all .15s;cursor:pointer}
+.btn-ghost:hover{border-color:rgba(255,255,255,.6);background:rgba(255,255,255,.06)}
+.cta-trust{display:flex;align-items:center;justify-content:center;gap:20px;font-size:13px;opacity:.6;flex-wrap:wrap;position:relative}
+
+/* Footer */
+.site-footer{max-width:var(--mx);margin:72px auto 0;padding:0 24px 40px;border-top:1px solid var(--s-bdr)}
+.footer-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding:40px 0;border-bottom:1px solid var(--s-bdr)}
+.footer-brand{font-size:15px;font-weight:700;color:var(--s-ink);letter-spacing:-.02em;margin-bottom:10px}
+.footer-brand em{color:var(--s-ac);font-style:normal}
+.footer-tagline{font-size:13px;color:var(--s-ink3);line-height:1.7;margin-bottom:10px}
+.footer-col-h{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--s-ink3);margin-bottom:14px}
+.footer-col-links{display:flex;flex-direction:column;gap:8px}
+.footer-col-links a{font-size:14px;color:var(--s-ink2);transition:color .12s}
+.footer-col-links a:hover{color:var(--s-ink)}
+.footer-mini-cta{display:inline-block;background:var(--s-ac);color:#fff;padding:10px 18px;border-radius:var(--s-r);font-size:13px;font-weight:600;transition:all .15s;border:none;cursor:pointer;font-family:var(--ff)}
+.footer-mini-cta:hover{background:var(--s-ac2)}
+.footer-bottom{display:flex;align-items:center;justify-content:space-between;padding-top:20px;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:13px;color:var(--s-ink3)}
+.footer-legal{display:flex;gap:16px}
+.footer-legal a{font-size:13px;color:var(--s-ink3);transition:color .12s}
+.footer-legal a:hover{color:var(--s-ink2)}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:860px){
+  .prob-grid{grid-template-columns:1fr}
+  .steps-grid{grid-template-columns:1fr 1fr}
+  .compare-grid{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .price-items{grid-template-columns:1fr}
+  .site-links{display:none}
+  .snav-mob{display:flex;align-items:center;gap:8px}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .hero,.section,.persona-band,.cta-section{padding-left:16px;padding-right:16px}
+  .stats-band{padding:32px 16px 0}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .hero{padding-top:48px}
+  .hero-btns{flex-direction:column;align-items:center}
+  .steps-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:24px}
+  .cta-box{padding:36px 22px}
+}
+@media print{
+  .site-nav,.site-footer,.cta-section,.booking-modal,.persona-tabs,.dash-chrome,.dash-fs-bar,.dash-caption,#scroll-prog,.snav-mob,.mob-nav-ov{display:none!important}
+}
+</style>
+<!-- DASHBOARD SCOPED CSS -->
+<style>
+/* Scope: all dashboard styles scoped via .dash-embed class on container */
+
+/* ========== TOKENS ========== */
+:root{
+  --ff:'DM Sans',system-ui,sans-serif;--fm:'DM Mono',monospace;
+  --bg:#F3F1EC;--sur:#FFFFFF;--s2:#EDEAE3;--s3:#E2DED6;
+  --bdr:rgba(20,15,8,.10);--bdr2:rgba(20,15,8,.20);
+  --ink:#1C1610;--ink2:#58524A;--ink3:#9A9288;
+  --ac:#C8421A;--ac2:#A33412;--acbg:rgba(200,66,26,.08);
+  --gn:#2A7530;--gnbg:#E8F5E9;
+  --rd:#BF2F1C;--rdbg:#FDECEA;
+  --am:#87590A;--ambg:#FEF3DC;
+  --bl:#1456A0;--blbg:#E6F0FB;
+  --sh:0 1px 3px rgba(0,0,0,.07),0 1px 2px rgba(0,0,0,.04);
+  --shm:0 4px 18px rgba(0,0,0,.10),0 2px 5px rgba(0,0,0,.05);
+  --r:10px;--rl:14px;--rx:18px;--hh:54px;--mx:1320px;
+}
+[data-theme=dark]{
+  --bg:#0E0D0B;--sur:#191714;--s2:#221F1B;--s3:#2B2823;
+  --bdr:rgba(255,250,240,.09);--bdr2:rgba(255,250,240,.19);
+  --ink:#F0EDE6;--ink2:#9E968C;--ink3:#625C54;
+  --ac:#DE5A28;--ac2:#F07040;--acbg:rgba(222,90,40,.12);
+  --gn:#50C060;--gnbg:rgba(80,192,96,.12);
+  --rd:#F05050;--rdbg:rgba(240,80,80,.12);
+  --am:#FFB84A;--ambg:rgba(255,184,74,.12);
+  --bl:#5AADFF;--blbg:rgba(90,173,255,.12);
+  --sh:0 1px 4px rgba(0,0,0,.4);--shm:0 4px 22px rgba(0,0,0,.55);
+}
+body.hc{--bdr:rgba(20,15,8,.28);--bdr2:rgba(20,15,8,.52);--ink2:#3A3028;--ink3:#6A6258}
+[data-theme=dark] body.hc{--bdr:rgba(255,250,240,.26);--bdr2:rgba(255,250,240,.48);--ink2:#C8C0B4;--ink3:#908880}
+body.nomotion *,body.nomotion *::before,body.nomotion *::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+body.bigtxt .mv{font-size:22px!important}body.bigtxt .ai-txt,body.bigtxt td,body.bigtxt .su-tx{font-size:14px!important}
+/* ========== RESET ========== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-text-size-adjust:100%}
+body{font-family:var(--ff);background:var(--bg);color:var(--ink);line-height:1.5;min-height:100vh;-webkit-font-smoothing:antialiased;transition:background .2s,color .2s}
+button,input{font-family:var(--ff)}button{cursor:pointer}
+button:focus-visible,a:focus-visible{outline:2px solid var(--ac);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;top:-100px;left:8px;background:var(--ac);color:#fff;padding:8px 16px;border-radius:var(--r);font-size:14px;font-weight:600;z-index:9999;text-decoration:none;transition:top .15s}
+.skip:focus{top:8px}
+/* ========== HEADER ========== */
+.hd{background:var(--sur);border-bottom:1px solid var(--bdr);position:sticky;top:0;z-index:99;box-shadow:var(--sh);height:var(--hh)}
+.hd-in{display:flex;align-items:center;max-width:var(--mx);margin:0 auto;padding:0 14px;height:100%}
+.brand{display:flex;align-items:center;gap:8px;padding-right:14px;border-right:1px solid var(--bdr);margin-right:2px;flex-shrink:0;text-decoration:none}
+.brand-nm{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.03em}
+.brand-nm em{color:var(--ac);font-style:normal}
+.ldot{width:6px;height:6px;border-radius:50%;background:var(--gn);animation:blink 2.5s ease-in-out infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+@media(max-width:640px){.demo-bar .demo-long{display:none}.demo-bar .demo-short{display:inline!important}}
+.nav{display:flex;flex:1;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.nav::-webkit-scrollbar{display:none}
+.ntab{display:flex;align-items:center;gap:5px;padding:0 12px;height:var(--hh);font-size:13px;font-weight:400;color:var(--ink2);background:transparent;border:none;border-bottom:2.5px solid transparent;white-space:nowrap;transition:color .13s,border-color .13s;flex-shrink:0;cursor:pointer;min-height:44px}
+.ntab:hover{color:var(--ink)}
+.ntab.on{color:var(--ac);border-bottom-color:var(--ac);font-weight:500}
+.nico{font-size:14px;line-height:1}
+.hdr{display:flex;align-items:center;gap:5px;padding-left:10px;border-left:1px solid var(--bdr);margin-left:auto;flex-shrink:0}
+.rbtn{padding:5px 10px;font-size:12px;border-radius:var(--r);border:1px solid var(--bdr);background:transparent;color:var(--ink2);transition:all .12s;font-weight:400;min-height:32px;cursor:pointer}
+.rbtn:hover{border-color:var(--bdr2);color:var(--ink);background:var(--s2)}
+.rbtn.on{background:var(--ac);color:#fff;border-color:var(--ac);font-weight:600}
+.calbtn{display:flex;align-items:center;gap:5px;padding:5px 10px;font-size:12px;border-radius:var(--r);border:1px solid var(--bdr);background:transparent;color:var(--ink2);transition:all .12s;white-space:nowrap;min-height:32px;cursor:pointer}
+.calbtn:hover{border-color:var(--bdr2);color:var(--ink);background:var(--s2)}
+.calbtn.on{border-color:var(--ac);color:var(--ac);background:var(--acbg)}
+.calbtn svg{width:12px;height:12px;stroke:currentColor;fill:none;flex-shrink:0}
+.cmpbtn{display:flex;align-items:center;gap:5px;padding:5px 10px;font-size:12px;border-radius:var(--r);border:1px solid var(--bdr);background:transparent;color:var(--ink2);transition:all .12s;white-space:nowrap;min-height:32px;cursor:pointer}
+.cmpbtn:hover{border-color:var(--bdr2);color:var(--ink)}
+.cmpbtn.on{border-color:var(--ac);color:var(--ac);background:var(--acbg)}
+.cbx{width:13px;height:13px;border:1.5px solid currentColor;border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .12s}
+.cmpbtn.on .cbx{background:var(--ac);border-color:var(--ac)}
+.cmpbtn.on .cbx::after{content:'';display:block;width:6px;height:3.5px;border-left:1.5px solid #fff;border-bottom:1.5px solid #fff;transform:rotate(-45deg) translate(1px,-1px)}
+.ibtn{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--r);border:1px solid var(--bdr);background:transparent;color:var(--ink2);transition:all .12s;flex-shrink:0;cursor:pointer;min-width:32px}
+.ibtn:hover{border-color:var(--bdr2);color:var(--ink);background:var(--s2)}
+.ibtn svg{width:15px;height:15px;stroke:currentColor;fill:none}
+.clock{font-size:11px;color:var(--ink3);font-family:var(--fm);min-width:34px;text-align:right;font-variant-numeric:tabular-nums}
+/* ========== NAV PILL + DROPDOWN (tablet/mobile) ========== */
+.nav-pill{
+  display:none;
+  align-items:center;gap:7px;
+  padding:6px 10px 6px 10px;
+  height:calc(var(--hh) - 12px);
+  border:1px solid var(--bdr);
+  border-radius:var(--r);
+  background:transparent;
+  cursor:pointer;flex-shrink:0;
+  font-family:var(--ff);
+  transition:background .12s, border-color .12s;
+  position:relative;
+  margin-right:4px;
+}
+.nav-pill:hover{background:var(--s2);border-color:var(--bdr2)}
+.nav-pill.open{background:var(--acbg);border-color:var(--ac)}
+.nav-pill-ico{font-size:15px;line-height:1;flex-shrink:0}
+.nav-pill-label{font-size:13px;font-weight:500;color:var(--ink);white-space:nowrap}
+.nav-pill.open .nav-pill-label{color:var(--ac)}
+.nav-pill-chevron{
+  width:16px;height:16px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;transition:transform .2s ease;
+  color:var(--ink2);
+}
+.nav-pill-chevron svg{width:10px;height:10px;stroke:currentColor;fill:none}
+.nav-pill.open .nav-pill-chevron{transform:rotate(180deg);color:var(--ac)}
+
+/* Dropdown panel */
+.nav-drop{
+  display:none;
+  position:absolute;
+  top:calc(100% + 6px);
+  left:0;
+  min-width:200px;
+  background:var(--sur);
+  border:1px solid var(--bdr2);
+  border-radius:var(--rl);
+  box-shadow:var(--shm);
+  padding:6px;
+  z-index:500;
+  animation:dropIn .15s cubic-bezier(.25,.46,.45,.94);
+}
+.nav-drop.open{display:block}
+@keyframes dropIn{
+  from{opacity:0;transform:translateY(-6px) scale(.98)}
+  to{opacity:1;transform:none}
+}
+.nav-drop-item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;
+  border-radius:var(--r);border:none;
+  background:transparent;color:var(--ink2);
+  font-size:13.5px;font-weight:400;
+  width:100%;text-align:left;
+  transition:background .1s, color .1s;
+  font-family:var(--ff);cursor:pointer;
+  min-height:44px;position:relative;
+}
+.nav-drop-item:hover{background:var(--s2);color:var(--ink)}
+.nav-drop-item.on{
+  background:var(--acbg);color:var(--ac);font-weight:500;
+}
+.nav-drop-item.on::before{
+  content:'';position:absolute;left:0;top:8px;bottom:8px;
+  width:3px;border-radius:0 3px 3px 0;background:var(--ac);
+}
+.nav-drop-ico{font-size:16px;line-height:1;flex-shrink:0}
+.nav-drop-name{flex:1}
+.nav-drop-tick{
+  width:16px;height:16px;border-radius:50%;
+  background:var(--ac);
+  display:none;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.nav-drop-item.on .nav-drop-tick{display:flex}
+.nav-drop-tick svg{width:9px;height:9px;stroke:#fff;fill:none}
+
+/* Scrim to close on outside click */
+.nav-drop-scrim{
+  display:none;position:fixed;inset:0;z-index:499;
+}
+.nav-drop-scrim.open{display:block}
+
+/* ========== OLD MOBILE DRAWER (settings only on small screens) ========== */
+.mob-ov{display:none;position:fixed;inset:0;z-index:300}
+.mob-ov.open{display:block}
+.mob-back{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.mob-pnl{position:absolute;top:0;left:0;width:min(280px,82vw);height:100%;background:var(--sur);border-right:1px solid var(--bdr2);box-shadow:var(--shm);display:flex;flex-direction:column;animation:slideIn .18s ease;overflow-y:auto;-webkit-overflow-scrolling:touch}
+@keyframes slideIn{from{transform:translateX(-100%)}to{transform:translateX(0)}}
+.mob-hd{padding:14px 14px 12px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.mob-logo{font-size:15px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+.mob-logo em{color:var(--ac);font-style:normal}
+.mob-x{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:var(--r);border:1px solid var(--bdr);background:transparent;color:var(--ink2);cursor:pointer}
+.mob-x svg{width:13px;height:13px;stroke:currentColor;fill:none}
+.mob-nav{padding:8px;flex:1}
+.mobitem{display:flex;align-items:center;gap:10px;padding:11px 12px;border-radius:var(--r);border:none;background:transparent;color:var(--ink2);font-size:14px;font-weight:400;width:100%;text-align:left;transition:all .12s;font-family:var(--ff);cursor:pointer;margin-bottom:2px;min-height:44px}
+.mobitem:hover{background:var(--s2);color:var(--ink)}
+.mobitem.on{background:var(--acbg);color:var(--ac);font-weight:500}
+.mob-foot{padding:10px 14px 14px;border-top:1px solid var(--bdr);display:flex;gap:6px;flex-shrink:0}
+.mob-foot .rbtn{flex:1;text-align:center;min-height:40px}
+/* ========== CALENDAR ========== */
+.cal-ov{display:none;position:fixed;inset:0;z-index:200}
+.cal-ov.open{display:block}
+.cal-scrim{position:absolute;inset:0;background:rgba(0,0,0,.3)}
+.cal-pnl{position:absolute;background:var(--sur);border:1px solid var(--bdr2);border-radius:var(--rx);box-shadow:var(--shm);padding:16px;z-index:201;animation:popIn .15s ease;width:min(310px,calc(100vw - 24px))}
+@keyframes popIn{from{opacity:0;transform:translateY(-8px) scale(.97)}to{opacity:1;transform:none}}
+.cal-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cal-mo{font-size:13px;font-weight:600;color:var(--ink)}
+.cal-navs{display:flex;gap:4px}
+.cal-arr{width:28px;height:28px;border-radius:var(--r);border:1px solid var(--bdr);background:transparent;color:var(--ink2);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .11s;min-width:28px}
+.cal-arr:hover{background:var(--s2);border-color:var(--bdr2);color:var(--ink)}
+.cal-arr svg{width:11px;height:11px;stroke:currentColor;fill:none}
+.cal-disp{font-size:11px;color:var(--ink2);text-align:center;padding:7px 10px;background:var(--s2);border-radius:var(--r);margin-bottom:6px;font-family:var(--fm);min-height:30px;display:flex;align-items:center;justify-content:center}
+.cal-hint{font-size:11px;color:var(--ac);text-align:center;margin-bottom:8px;min-height:15px;font-style:italic}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:10px}
+.cal-dow{text-align:center;font-size:10px;font-weight:500;color:var(--ink3);padding:3px 0 5px}
+.cday{text-align:center;font-size:12px;padding:6px 2px;border-radius:6px;cursor:pointer;color:var(--ink2);border:none;background:transparent;line-height:1;transition:all .1s;width:100%;font-family:var(--ff);min-height:28px}
+.cday:hover:not(.other):not(.dis){background:var(--s2);color:var(--ink)}
+.cday.tod{font-weight:700;color:var(--ac)}
+.cday.rstart,.cday.rend{background:var(--ac);color:#fff;font-weight:600}
+.cday.inr{background:var(--acbg);color:var(--ink)}
+.cday.other{color:var(--ink3)}
+.cday.dis{opacity:.3;cursor:not-allowed;pointer-events:none}
+.cal-pres{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding-top:10px;border-top:1px solid var(--bdr)}
+.cpre{padding:7px 6px;font-size:12px;border-radius:var(--r);border:1px solid var(--bdr);background:transparent;color:var(--ink2);transition:all .11s;text-align:center;cursor:pointer;font-family:var(--ff)}
+.cpre:hover{background:var(--s2);color:var(--ink);border-color:var(--bdr2)}
+.cpre.on{background:var(--acbg);color:var(--ac);border-color:var(--ac);font-weight:500}
+/* ========== A11Y DIALOG ========== */
+.a11y-ov{display:none;position:fixed;inset:0;z-index:400;background:rgba(0,0,0,.45)}
+.a11y-ov.open{display:flex;align-items:center;justify-content:center}
+.a11y-dlg{background:var(--sur);border:1px solid var(--bdr2);border-radius:var(--rx);box-shadow:var(--shm);padding:24px;width:min(380px,calc(100vw - 32px));animation:popIn .15s ease}
+.a11y-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.a11y-ttl{font-size:16px;font-weight:600;color:var(--ink)}
+.a11y-row{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--bdr)}
+.a11y-row:last-of-type{border-bottom:none;padding-bottom:0}
+.a11y-lbl{font-size:13px;font-weight:500;color:var(--ink)}
+.a11y-desc{font-size:11px;color:var(--ink2);margin-top:2px;line-height:1.4}
+.tog{width:42px;height:24px;border-radius:12px;border:none;background:var(--s3);position:relative;cursor:pointer;transition:background .2s;flex-shrink:0;min-width:42px}
+.tog::after{content:'';position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.tog.on{background:var(--ac)}
+.tog.on::after{transform:translateX(18px)}
+.a11y-ok{margin-top:16px;width:100%;padding:11px;border-radius:var(--r);border:1px solid var(--bdr);background:transparent;color:var(--ink);font-size:13px;font-weight:500;cursor:pointer;font-family:var(--ff);transition:all .12s;min-height:44px}
+.a11y-ok:hover{background:var(--s2)}
+/* ========== TOAST ========== */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--ink);color:var(--sur);padding:10px 20px;border-radius:var(--rx);font-size:13px;font-weight:500;z-index:9000;box-shadow:var(--shm);transition:transform .25s ease,opacity .25s ease;opacity:0;pointer-events:none;white-space:nowrap;max-width:calc(100vw - 32px)}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+/* ========== LAST UPDATED BAR ========== */
+.upd-bar{display:flex;align-items:center;justify-content:space-between;padding:7px 12px;font-size:11px;color:var(--ink2);font-family:var(--fm);flex-wrap:wrap;gap:6px;background:var(--sur);border:1px solid var(--bdr);border-radius:var(--r);margin-bottom:4px;box-shadow:var(--sh)}
+.upd-left{display:flex;align-items:center;gap:6px}
+.upd-dot{width:5px;height:5px;border-radius:50%;background:var(--gn);animation:blink 2.5s ease-in-out infinite;flex-shrink:0}
+.upd-btn{padding:3px 9px;font-size:11px;border-radius:6px;border:1px solid var(--bdr);background:transparent;color:var(--ink2);cursor:pointer;font-family:var(--ff);transition:all .12s}
+.upd-btn:hover{background:var(--s2);border-color:var(--bdr2);color:var(--ink)}
+/* ========== MAIN ========== */
+.main{max-width:var(--mx);margin:0 auto;padding:14px;flex:1}
+.pg{display:none;flex-direction:column;gap:13px;animation:fadeUp .18s ease}
+.pg.on{display:flex}
+@keyframes fadeUp{  from{opacity:0;transform:translateY(8px)}  to{opacity:1;transform:none}}
+/* ========== GRIDS ========== */
+.g4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.g2{display:grid;grid-template-columns:1.5fr 1fr;gap:13px}
+.g2r{display:grid;grid-template-columns:1fr 1.5fr;gap:13px}
+.g6{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+/* ========== METRICS ========== */
+.metric{background:var(--sur);border:1px solid var(--bdr);border-radius:var(--rl);padding:14px 15px 13px;position:relative;overflow:hidden;box-shadow:var(--sh);transition:box-shadow .15s,transform .15s}
+.metric:hover{box-shadow:var(--shm);transform:translateY(-1px)}
+.metric::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2.5px}
+.or::after{background:var(--ac)}.re::after{background:var(--rd)}.gr::after{background:var(--gn)}.bl::after{background:var(--bl)}
+.ml{font-size:11px;color:var(--ink2);margin-bottom:5px;font-weight:400}
+.mv{font-size:21px;font-weight:600;color:var(--ink);line-height:1.1;font-family:var(--fm);letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.md{font-size:11px;margin-top:4px;font-weight:400}
+.mc{font-size:10px;margin-top:2px;color:var(--ink3);font-family:var(--fm)}
+.up{color:var(--gn)}.dn{color:var(--rd)}.nt{color:var(--ink2)}
+/* ========== CARDS ========== */
+.card{background:var(--sur);border:1px solid var(--bdr);border-radius:var(--rl);padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04)}
+[data-theme=dark] .card{box-shadow:0 2px 8px rgba(0,0,0,.3),0 1px 2px rgba(0,0,0,.2)}
+.ch{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;gap:8px;flex-wrap:wrap}
+.ct{font-size:13px;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+.cmeta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.badge{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--s2);color:var(--ink2);border:1px solid var(--bdr)}
+.br{background:var(--rdbg);color:var(--rd);border-color:transparent}
+.bg2{background:var(--gnbg);color:var(--gn);border-color:transparent}
+.ba{background:var(--ambg);color:var(--am);border-color:transparent}
+/* ========== CHART LEGEND ========== */
+.leg{display:flex;gap:12px;flex-wrap:wrap}
+.legi{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--ink2)}
+.legsq{width:9px;height:9px;border-radius:2px;flex-shrink:0}
+.legdash{width:14px;flex-shrink:0;border-top:2px dashed var(--ink3)}
+/* ========== TABLES ========== */
+.twrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:left;font-size:11px;font-weight:500;color:var(--ink2);padding:0 4px 8px 0;border-bottom:1px solid var(--bdr);white-space:nowrap}
+td{padding:9px 4px 9px 0;border-bottom:1px solid var(--bdr);color:var(--ink);vertical-align:middle;transition:background .1s}
+td:last-child,th:last-child{text-align:right;padding-right:0}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--s2)}
+/* ========== PILLS ========== */
+.pill{display:inline-flex;align-items:center;font-size:11px;padding:3px 9px;border-radius:20px;font-weight:500;white-space:nowrap}
+.pg2{background:var(--gnbg);color:var(--gn)}.pa2{background:var(--ambg);color:var(--am)}.pr2{background:var(--rdbg);color:var(--rd)}.pb2{background:var(--blbg);color:var(--bl)}
+/* ========== CHARTS ========== */
+.cw{position:relative;width:100%}
+.h190{height:190px}.h170{height:170px}.h145{height:145px}
+/* ========== AI HERO ========== */
+.ai-hero{background:var(--sur);border:1px solid var(--bdr);border-left:3px solid var(--ac);border-radius:var(--rl);padding:16px 18px;box-shadow:var(--sh)}
+.ai-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:13px;gap:8px;flex-wrap:wrap}
+.ai-title{font-size:13px;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:7px}
+.ai-spark{color:var(--ac);font-size:15px}
+.ai-time{font-size:11px;color:var(--ink3);font-family:var(--fm)}
+.ai-items{display:flex;flex-direction:column;gap:8px;margin-bottom:13px}
+.ai-item{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;border-radius:var(--r);background:var(--s2);border:1px solid var(--bdr);transition:opacity .3s}
+.ai-item.faded{opacity:.38}
+.ai-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.ai-txt{font-size:13px;color:var(--ink2);line-height:1.5;flex:1}
+.ai-txt strong{color:var(--ink);font-weight:600}
+.actrow{display:flex;gap:7px;flex-wrap:wrap}
+.actbtn{padding:7px 14px;font-size:12px;border-radius:var(--r);border:1px solid var(--bdr2);background:var(--sur);color:var(--ink);font-weight:500;transition:all .15s;white-space:nowrap;min-height:36px;cursor:pointer}
+.actbtn:hover:not(:disabled){background:var(--ac);color:#fff;border-color:var(--ac);transform:translateY(-1px);box-shadow:0 2px 8px rgba(200,66,26,.25)}
+.actbtn.done{background:var(--gnbg);color:var(--gn);border-color:transparent;cursor:default;transform:none;box-shadow:none}
+.alog{display:none;margin-top:11px;padding:10px 12px;border-radius:var(--r);background:var(--gnbg);color:var(--gn);font-size:12px;line-height:1.6}
+.alog.show{display:block}
+/* ========== AI MINI INSIGHT ========== */
+.ai-ins{margin-top:14px;padding:11px 13px;border-left:2px solid var(--ac);background:var(--acbg);border-radius:0 var(--r) var(--r) 0}
+.ai-lbl{font-size:10px;font-weight:600;color:var(--ac);letter-spacing:.07em;text-transform:uppercase;margin-bottom:4px}
+.ai-t{font-size:12px;color:var(--ink2);line-height:1.55;margin-bottom:8px}
+.ai-t:last-child{margin-bottom:0}
+/* ========== RAG STATUS ========== */
+.rag{background:var(--sur);border:1px solid var(--bdr);border-radius:var(--rl);padding:12px 13px;cursor:pointer;transition:all .15s;box-shadow:var(--sh);position:relative;overflow:visible}
+.rag:hover{box-shadow:var(--shm);transform:translateY(-1px);border-color:var(--bdr2)}
+.rag-ind{display:flex;align-items:center;gap:7px;margin-bottom:4px}
+.rag-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.rag-nm{font-size:12px;font-weight:600;color:var(--ink)}
+.rag-sub{font-size:11px;color:var(--ink2);line-height:1.3}
+.rag-arrow{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--ink3);font-size:14px;opacity:0;transition:opacity .15s}
+.rag:hover .rag-arrow{opacity:1}
+/* ========== PROGRESS ========== */
+.prog{margin-bottom:12px}.prog:last-child{margin-bottom:0}
+.phd{display:flex;justify-content:space-between;font-size:12px;color:var(--ink2);margin-bottom:5px}
+.phd span:last-child{font-weight:500;color:var(--ink);font-family:var(--fm)}
+.ptrk{background:var(--s2);border-radius:4px;height:5px;overflow:hidden}
+.pfil{height:100%;border-radius:4px;transition:width .6s ease}
+/* ========== STANDUPS ========== */
+.su{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid var(--bdr);align-items:flex-start}
+.su:last-child{border-bottom:none}
+.av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;flex-shrink:0}
+.su-tx{font-size:13px;color:var(--ink2);line-height:1.4}
+.su-nm{font-weight:600;color:var(--ink)}
+.su-ti{font-size:11px;color:var(--ink3);margin-top:2px;font-family:var(--fm)}
+/* ========== ALERTS ========== */
+.ali{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--bdr)}
+.ali:last-child{border-bottom:none}
+.al-tx{flex:1;color:var(--ink2);font-size:13px}
+/* ========== EXPORT BTN ========== */
+.exp-btn{display:flex;align-items:center;gap:5px;padding:4px 10px;font-size:11px;border-radius:var(--r);border:1px solid var(--bdr);background:transparent;color:var(--ink2);cursor:pointer;font-family:var(--ff);transition:all .12s}
+.exp-btn:hover{background:var(--s2);color:var(--ink);border-color:var(--bdr2)}
+.exp-btn svg{width:11px;height:11px;stroke:currentColor;fill:none;flex-shrink:0}
+/* ========== RESPONSIVE ========== */
+@media(max-width:900px){
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g3{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g6{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .g2,.g2r{grid-template-columns:1fr}
+  .nav{display:none}
+  .nav-pill{display:flex}
+}
+@media(max-width:640px){
+  .mobbtn{display:flex}
+  .g4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g6{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .g3{grid-template-columns:1fr 1fr}
+  .hdr .cmpbtn{display:none}
+  .clock{display:none}
+  .main{padding:10px}
+  .mv{font-size:19px!important}
+  .actbtn{min-height:44px;padding:9px 14px}
+  .ai-hero{padding:13px 14px}
+  .card{padding:13px}
+}
+@media(max-width:420px){
+  .hdr .rbtn{padding:4px 7px;font-size:11px}
+  .calbtn span{display:none}
+  .g6,.g4{grid-template-columns:1fr 1fr}
+  .actrow{flex-direction:column}
+  .actbtn{width:100%;text-align:center}
+}
+@media print{
+  .hd,.mobbtn,.ibtn,.a11y-ov,.mob-ov,.cal-ov,.upd-bar,.toast,.nav-pill,.nav-drop-scrim{display:none!important}
+  .main{padding:0}.pg{display:flex!important}
+  body{background:#fff;color:#000}
+  .card,.metric{box-shadow:none;border:1px solid #ccc}
+}
+
+/* ===== DEMO BANNER ===== */
+.demo-bar{background:var(--ac);color:#fff;text-align:center;padding:9px 16px;font-size:13px;font-weight:500;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:101}
+.demo-bar a{color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
+.demo-bar a:hover{opacity:.85}
+.demo-dismiss{background:transparent;border:none;color:rgba(255,255,255,.7);cursor:pointer;padding:2px 6px;font-size:16px;line-height:1;margin-left:4px}
+.demo-dismiss:hover{color:#fff}
+
+/* ===== SECTION TITLE BAR ===== */
+.sec-bar{display:flex;align-items:center;justify-content:space-between;padding:0 0 4px;flex-wrap:wrap;gap:8px}
+.sec-bar-left{display:flex;align-items:center;gap:8px}
+.sec-tag{font-size:11px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink3);display:flex;align-items:center;gap:5px}
+.sec-bar-right{display:flex;gap:7px;align-items:center}
+.sec-action-btn{display:flex;align-items:center;gap:5px;padding:5px 11px;font-size:12px;border-radius:var(--r);border:1px solid var(--bdr);background:var(--sur);color:var(--ink2);cursor:pointer;font-family:var(--ff);transition:all .12s;font-weight:400}
+.sec-action-btn:hover{border-color:var(--bdr2);background:var(--s2);color:var(--ink)}
+.sec-action-btn svg{width:12px;height:12px;stroke:currentColor;fill:none}
+
+/* ===== SPARKLINES PLACEHOLDER
+ */
+.metric-spark{height:28px;margin-top:6px;opacity:.7}
+
+/* ===== CHART LOADING SHIMMER ===== */
+.chart-loading{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:var(--sur);border-radius:var(--r)}
+.chart-loading-inner{width:60%;height:4px;background:var(--s2);border-radius:4px;overflow:hidden;position:relative}
+.chart-loading-inner::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,var(--s3),transparent);animation:shimmer 1.2s ease-in-out infinite}
+@keyframes shimmer{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+
+/* ===== BUSINESS HEALTH SCORE ===== */
+.health-card{background:var(--sur);border:1px solid var(--bdr);border-left:3px solid var(--gn);border-radius:var(--rl);padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.06);display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.health-ring{position:relative;width:72px;height:72px;flex-shrink:0}
+.health-ring svg{width:72px;height:72px;transform:rotate(-90deg)}
+.health-ring-bg{fill:none;stroke:var(--s2);stroke-width:6}
+.health-ring-fill{fill:none;stroke-width:6;stroke-linecap:round;transition:stroke-dashoffset .8s ease}
+.health-score{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.health-num{font-size:18px;font-weight:700;font-family:var(--fm);color:var(--ink);line-height:1}
+.health-lbl{font-size:9px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3);margin-top:2px}
+.health-detail{flex:1}
+.health-title{font-size:13px;font-weight:600;color:var(--ink);margin-bottom:4px}
+.health-sub{font-size:12px;color:var(--ink2);line-height:1.5}
+.health-items{display:flex;flex-direction:column;gap:4px;margin-top:8px}
+.health-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--ink2)}
+.health-item-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+
+/* ===== NOTIFICATION BADGES ===== */
+.rag-badge{position:absolute;top:-4px;right:-4px;min-width:17px;height:17px;border-radius:9px;background:var(--rd);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;padding:0 4px;border:2px solid var(--bg);line-height:1}
+
+/* ===== KEYBOARD SHORTCUTS ===== */
+.kbd{display:inline-flex;align-items:center;justify-content:center;background:var(--s2);border:1px solid var(--bdr2);border-radius:4px;padding:1px 5px;font-size:10px;font-family:var(--fm);color:var(--ink2);line-height:1.4}
+
+/* ===== INLINE SPARKLINES ===== */
+.spark{display:block;width:100%;height:24px;margin-top:5px;opacity:.6}
+.spark path{fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.spark-up{stroke:var(--gn)}.spark-dn{stroke:var(--rd)}.spark-flat{stroke:var(--ink3)}
+
+/* ===== DASHBOARD EMBED OVERRIDES ===== */
+.dash-embed{font-family:var(--ff);background:var(--bg);color:var(--ink)}
+.dash-embed .upd-bar{display:flex;align-items:center;justify-content:space-between;padding:7px 12px;font-size:11px;color:var(--ink2);font-family:var(--fm);flex-wrap:wrap;gap:6px;background:var(--sur);border:1px solid var(--bdr);border-radius:var(--r);margin-bottom:4px;box-shadow:var(--sh)}
+.dash-embed .upd-left{display:flex;align-items:center;gap:6px}
+.dash-embed .upd-dot{width:5px;height:5px;border-radius:50%;background:var(--gn);animation:blink 2.5s ease-in-out infinite;flex-shrink:0}
+.dash-embed .upd-btn{padding:3px 9px;font-size:11px;border-radius:6px;border:1px solid var(--bdr);background:transparent;color:var(--ink2);cursor:pointer;font-family:var(--fm);transition:all .12s}
+.dash-embed .upd-btn:hover{background:var(--s2);border-color:var(--bdr2);color:var(--ink)}
+.dash-embed .pg{display:none;flex-direction:column;gap:13px;animation:fadeUp .18s ease}
+.dash-embed .pg.on{display:flex}
+/* embed-specific fullscreen button styling */
+.dash-embed .ibtn-fs{border-color:var(--s-ac,#C8421A) !important;color:var(--s-ac,#C8421A) !important}
+
+</style>
+
+/* ===== DEMO CUSTOMISER ===== */
+.cust-btn{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:var(--s-r);border:1px solid var(--s-bdr2);background:var(--s-sur);color:var(--s-ink2);font-size:13px;font-weight:500;cursor:pointer;font-family:var(--ff);transition:all .12s;margin-left:8px}
+.cust-btn:hover{border-color:var(--s-ac);color:var(--s-ac);background:rgba(200,66,26,.04)}
+.cust-btn svg{width:13px;height:13px;stroke:currentColor;fill:none}
+.cust-panel{display:none;position:fixed;top:0;right:0;width:min(360px,92vw);height:100%;background:var(--s-sur);box-shadow:-4px 0 24px rgba(0,0,0,.15);z-index:400;flex-direction:column;animation:drawerIn .22s ease}
+[data-theme=dark] .cust-panel{background:var(--sur);box-shadow:-4px 0 24px rgba(0,0,0,.5)}
+.cust-panel.open{display:flex}
+.cust-scrim{display:none;position:fixed;inset:0;z-index:399;background:rgba(0,0,0,.35)}
+.cust-scrim.open{display:block}
+.cust-head{padding:18px 20px 14px;border-bottom:1px solid var(--s-bdr);flex-shrink:0;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+[data-theme=dark] .cust-head{border-bottom-color:var(--bdr)}
+.cust-title{font-size:15px;font-weight:600;color:var(--s-ink)}
+[data-theme=dark] .cust-title{color:var(--ink)}
+.cust-sub{font-size:12px;color:var(--s-ink3);margin-top:3px;line-height:1.5}
+[data-theme=dark] .cust-sub{color:var(--ink3)}
+.cust-x{background:transparent;border:none;color:var(--s-ink2);cursor:pointer;font-size:20px;line-height:1;padding:2px;flex-shrink:0}
+.cust-body{flex:1;overflow-y:auto;padding:16px 20px;display:flex;flex-direction:column;gap:16px}
+.cust-field{display:flex;flex-direction:column;gap:5px}
+.cust-label{font-size:12px;font-weight:600;color:var(--s-ink);letter-spacing:.02em}
+[data-theme=dark] .cust-label{color:var(--ink)}
+.cust-hint{font-size:11px;color:var(--s-ink3);margin-top:-3px}
+[data-theme=dark] .cust-hint{color:var(--ink3)}
+.cust-input{padding:9px 12px;border-radius:var(--s-r);border:1px solid var(--s-bdr2);background:var(--s-sur);color:var(--s-ink);font-size:14px;font-family:var(--ff);width:100%;transition:border-color .12s}
+[data-theme=dark] .cust-input{background:var(--s2);border-color:var(--bdr2);color:var(--ink)}
+.cust-input:focus{outline:none;border-color:var(--s-ac)}
+.cust-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cust-section-head{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--s-ink3);padding-bottom:6px;border-bottom:1px solid var(--s-bdr);margin-top:4px}
+[data-theme=dark] .cust-section-head{color:var(--ink3);border-bottom-color:var(--bdr)}
+.cust-apply{background:var(--s-ac);color:#fff;padding:12px;border-radius:var(--s-r);font-size:14px;font-weight:600;border:none;width:100%;cursor:pointer;font-family:var(--ff);transition:all .15s;margin-top:4px}
+.cust-apply:hover{background:var(--s-ac2);transform:translateY(-1px)}
+.cust-reset{background:transparent;color:var(--s-ink2);padding:10px;border-radius:var(--s-r);font-size:13px;font-weight:500;border:1px solid var(--s-bdr);width:100%;cursor:pointer;font-family:var(--ff);transition:all .12s;margin-top:6px}
+.cust-reset:hover{background:var(--s-s2)}
+.cust-live-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(42,117,48,.1);color:var(--s-gn);font-size:11px;font-weight:600;padding:3px 9px;border-radius:20px;margin-top:8px}
+.cust-live-dot{width:5px;height:5px;border-radius:50%;background:var(--s-gn);animation:blink 1.5s ease-in-out infinite}
+.cust-preview{background:var(--s-s2);border-radius:var(--s-r);padding:12px;margin-top:4px}
+[data-theme=dark] .cust-preview{background:var(--s2)}
+.cust-preview-label{font-size:11px;font-weight:600;color:var(--s-ink3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
+[data-theme=dark] .cust-preview-label{color:var(--ink3)}
+.cust-preview-item{display:flex;justify-content:space-between;font-size:13px;padding:4px 0;border-bottom:1px solid var(--s-bdr)}
+[data-theme=dark] .cust-preview-item{border-bottom-color:var(--bdr)}
+.cust-preview-item:last-child{border-bottom:none}
+.cust-preview-key{color:var(--s-ink2)}
+[data-theme=dark] .cust-preview-key{color:var(--ink2)}
+.cust-preview-val{font-weight:600;color:var(--s-ink);font-family:var(--fm)}
+[data-theme=dark] .cust-preview-val{color:var(--ink)}
+
+</style>
+</head>
+<body>
+<a href="#main" class="skip">Skip to main content</a>
+<div id="scroll-prog" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+<!-- SITE NAV -->
+<header class="site-nav" role="banner">
+  <div class="site-nav-in">
+    <a href="#" class="site-logo" aria-label="SimpleDash home">Simple<em>Dash</em></a>
+    <ul class="site-links" role="list">
+      <li><a href="#demo">Live demo</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#offer">Pricing</a></li>
+      <li><a href="#testimonials">Results</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="snav-r">
+      <button class="snav-icon" id="site-dark-btn" onclick="toggleSiteDark()" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <svg id="site-dark-ico" viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="snav-cta" onclick="openBooking()">Book free call</button>
+      <div class="snav-mob">
+        <button class="snav-icon" id="snav-mob-btn" onclick="openSiteNav()" aria-label="Open navigation" aria-expanded="false">
+          <svg viewBox="0 0 24 24" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mob-nav-ov" id="mob-nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="mob-nav-scrim" onclick="closeSiteNav()"></div>
+  <div class="mob-nav-drawer">
+    <div class="mob-nav-head">
+      <span class="mob-nav-logo">Simple<em>Dash</em></span>
+      <button class="mob-nav-x" onclick="closeSiteNav()" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="mob-nav-links">
+      <a href="#demo" class="mob-nav-link" onclick="closeSiteNav()">&#9654; Live demo</a>
+      <a href="#how" class="mob-nav-link" onclick="closeSiteNav()">How it works</a>
+      <a href="#offer" class="mob-nav-link" onclick="closeSiteNav()">Pricing</a>
+      <a href="#testimonials" class="mob-nav-link" onclick="closeSiteNav()">Results</a>
+      <a href="#faq" class="mob-nav-link" onclick="closeSiteNav()">FAQ</a>
+    </div>
+    <div class="mob-nav-foot">
+      <button class="mob-nav-cta" onclick="openBooking();closeSiteNav()">Book free call &rarr;</button>
+      <button class="mob-nav-dark" onclick="toggleSiteDark()">
+        <span>Dark mode</span><span id="dark-tog-lbl">Off</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- BOOKING MODAL -->
+<div class="booking-modal" id="booking-modal" role="dialog" aria-modal="true" aria-label="Book a free strategy call">
+  <div class="bm-box">
+    <button class="bm-close" onclick="closeBooking()" aria-label="Close">&times;</button>
+    <div id="bm-form-wrap">
+      <div class="bm-title">Book your free call</div>
+      <p class="bm-sub">30 minutes. No commitment. We show you what your dashboard could look like with your actual data.</p>
+      <div class="bm-form" id="bm-form">
+        <div><label class="bm-label" for="bm-name">Your name</label><input class="bm-input" type="text" id="bm-name" placeholder="Sarah Johnson" autocomplete="name"></div>
+        <div><label class="bm-label" for="bm-email">Work email</label><input class="bm-input" type="email" id="bm-email" placeholder="sarah@company.co.uk" autocomplete="email"></div>
+        <div><label class="bm-label" for="bm-biz">Business type</label>
+          <select class="bm-select" id="bm-biz">
+            <option value="">Select your industry...</option>
+            <option>E-commerce / Retail</option><option>Logistics / Delivery</option>
+            <option>Marketing Agency</option><option>Professional Services</option>
+            <option>Manufacturing</option><option>Hospitality / Food</option><option>Other</option>
+          </select>
+        </div>
+        <div><label class="bm-label" for="bm-tools">Tools you currently use (optional)</label><input class="bm-input" type="text" id="bm-tools" placeholder="e.g. Xero, Shopify, Meta Ads"></div>
+        <div><label class="bm-label" for="bm-msg">Anything else we should know? (optional)</label><textarea class="bm-textarea" id="bm-msg" placeholder="Tell us about your business and what you want to see..."></textarea></div>
+        <button class="bm-submit" onclick="submitBooking()">Request my free call &rarr;</button>
+        <p class="bm-note">Free - no credit card. We will email you to arrange a time within a few hours.</p>
+      </div>
+    </div>
+    <div class="bm-success" id="bm-success">
+      <div class="bm-success-icon">&#127881;</div>
+      <h3>You are booked in!</h3>
+      <p>We will email you within a few hours to arrange your free 30-minute call. We will prepare a demo using data from a business similar to yours so you can see exactly what your dashboard would look like.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FULLSCREEN OVERLAY -->
+<div class="dash-fullscreen" id="dash-fullscreen" role="dialog" aria-modal="true" aria-label="Full screen dashboard demo">
+  <div class="dash-fs-bar">
+    <div class="dash-fs-label">&#9654; Interactive demo - <span id="fs-persona-lbl">E-commerce</span> business</div>
+    <div class="dash-fs-btns">
+      <button class="dash-fs-cta" onclick="closeFullscreen();openCust()" style="background:rgba(255,255,255,.15)">Customise &#9881;</button>
+      <button class="dash-fs-cta" onclick="openBooking();closeFullscreen()">Get yours built &rarr;</button>
+      <button class="dash-fs-close" onclick="closeFullscreen()" aria-label="Close">&times;</button>
+    </div>
+  </div>
+  <div class="dash-fs-inner" id="dash-fs-inner"></div>
+</div>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" aria-label="Hero">
+  <div class="hero-pill"><span class="hero-dot" aria-hidden="true"></span>Live data. AI insights. Built for you in 14 days.</div>
+  <h1>Every part of your business.<br><em>One screen.</em></h1>
+  <p class="hero-sub">We build you a custom AI dashboard that connects Xero, Shopify, Meta Ads and 60+ other tools - and tells you what needs your attention before it becomes a problem.</p>
+  <div class="hero-btns">
+    <a href="#demo" class="btn-primary">See the live demo &#8595;</a>
+    <button class="btn-secondary" onclick="openBooking()">Book a free call &rarr;</button>
+  </div>
+  <div class="hero-trust">
+    <span class="trust-item"><span class="trust-tick">&#10003;</span> No tech skills needed</span>
+    <span class="trust-item"><span class="trust-tick">&#10003;</span> Live in 14 days</span>
+    <span class="trust-item"><span class="trust-tick">&#10003;</span> Money-back guarantee</span>
+    <span class="trust-item"><span class="trust-tick">&#10003;</span> From &pound;2,997</span>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-band" aria-label="Key figures">
+  <div class="stats-grid" role="list">
+    <div class="stat-cell" role="listitem"><div class="stat-n">60+</div><div class="stat-l">Tool integrations supported</div></div>
+    <div class="stat-cell" role="listitem"><div class="stat-n">14</div><div class="stat-l">Days to go live, guaranteed</div></div>
+    <div class="stat-cell" role="listitem"><div class="stat-n">2hrs</div><div class="stat-l">Saved per day per business owner</div></div>
+    <div class="stat-cell" role="listitem"><div class="stat-n">100%</div><div class="stat-l">Money-back guarantee</div></div>
+  </div>
+</div>
+
+<!-- PERSONA + LIVE DEMO -->
+<div class="persona-band" id="demo">
+  <div class="persona-label">
+    <div class="section-eyebrow">Live interactive demo</div>
+    <h2 class="section-h">This is what your dashboard <em>actually looks like.</em></h2>
+    <p class="section-sub">Explore the real product. Switch business type to see how it adapts. Every section, every interaction is live - not a video, not a mockup.</p>
+  </div>
+  <div class="persona-tabs" role="group" aria-label="Choose a business type">
+    <button class="ptab on" onclick="switchPersona('retail',this)" aria-pressed="true"><span class="ptab-ico">&#128722;</span> E-commerce / Retail</button>
+    <button class="ptab" onclick="switchPersona('agency',this)" aria-pressed="false"><span class="ptab-ico">&#128202;</span> Marketing Agency</button>
+    <button class="ptab" onclick="switchPersona('logistics',this)" aria-pressed="false"><span class="ptab-ico">&#128666;</span> Logistics</button>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:4px">
+  <p class="persona-hint" id="persona-hint" style="margin:0">Showing: e-commerce / retail business data</p>
+  <button class="cust-btn" onclick="openCust()" aria-label="Customise demo data">
+    <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    Customise demo
+  </button>
+</div>
+  <div class="dash-frame" id="dash-frame" role="region" aria-label="Interactive dashboard">
+    <div class="dash-chrome" aria-hidden="true">
+      <div class="dc-dots">
+        <div class="dc-dot" style="background:#FF5F57"></div>
+        <div class="dc-dot" style="background:#FEBC2E"></div>
+        <div class="dc-dot" style="background:#28C840"></div>
+      </div>
+      <div class="dc-url" id="dc-url">app.simpledash.co.uk - Bloom Supply Co.</div>
+    </div>
+
+<div class="dash-embed" id="dash-embed">
+<header class="hd" role="banner">
+<div class="hd-in">
+  <a class="brand" href="#" aria-label="SimpleDash home">
+    <div class="ldot" aria-hidden="true"></div>
+    <span class="brand-nm">Simple<em>Dash</em></span>
+  </a>
+  <button class="mobbtn" id="d-mobbtn" onclick="dOpenMob()" aria-label="Open settings" aria-expanded="false">
+    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+
+  <!-- NAV PILL + DROPDOWN - visible on tablet/mobile -->
+  <div style="position:relative;flex-shrink:0;margin-right:4px">
+    <button class="nav-pill" id="d-nav-pill" onclick="dToggleNavDrop()" aria-label="Switch section" aria-expanded="false" aria-haspopup="listbox">
+      <span class="nav-pill-ico" id="d-nav-pill-ico" aria-hidden="true">&#9635;</span>
+      <span class="nav-pill-label" id="d-nav-pill-label">Overview</span>
+      <span class="nav-pill-chevron" aria-hidden="true">
+        <svg viewBox="0 0 12 12" stroke-width="2"><path d="M2 4l4 4 4-4"/></svg>
+      </span>
+    </button>
+    <div class="nav-drop" id="d-nav-drop" role="listbox" aria-label="Dashboard sections">
+      <button class="nav-drop-item on" id="d-nd-ov" onclick="dNavDropGo(event,'ov',this)" role="option" aria-selected="true"><span class="nav-drop-ico" aria-hidden="true">&#9635;</span><span class="nav-drop-name">Overview</span><span class="nav-drop-tick"><svg viewBox="0 0 12 12" stroke-width="2.5"><polyline points="2 6 5 9 10 3"/></svg></span></button>
+      <button class="nav-drop-item" id="d-nd-fin" onclick="dNavDropGo(event,'fin',this)" role="option" aria-selected="false"><span class="nav-drop-ico" aria-hidden="true">&#128176;</span><span class="nav-drop-name">Finance</span><span class="nav-drop-tick"><svg viewBox="0 0 12 12" stroke-width="2.5"><polyline points="2 6 5 9 10 3"/></svg></span></button>
+      <button class="nav-drop-item" id="d-nd-tsk" onclick="dNavDropGo(event,'tsk',this)" role="option" aria-selected="false"><span class="nav-drop-ico" aria-hidden="true">&#9989;</span><span class="nav-drop-name">Tasks</span><span class="nav-drop-tick"><svg viewBox="0 0 12 12" stroke-width="2.5"><polyline points="2 6 5 9 10 3"/></svg></span></button>
+      <button class="nav-drop-item" id="d-nd-mkt" onclick="dNavDropGo(event,'mkt',this)" role="option" aria-selected="false"><span class="nav-drop-ico" aria-hidden="true">&#128227;</span><span class="nav-drop-name">Marketing</span><span class="nav-drop-tick"><svg viewBox="0 0 12 12" stroke-width="2.5"><polyline points="2 6 5 9 10 3"/></svg></span></button>
+      <button class="nav-drop-item" id="d-nd-ops" onclick="dNavDropGo(event,'ops',this)" role="option" aria-selected="false"><span class="nav-drop-ico" aria-hidden="true">&#9881;&#65039;</span><span class="nav-drop-name">Operations</span><span class="nav-drop-tick"><svg viewBox="0 0 12 12" stroke-width="2.5"><polyline points="2 6 5 9 10 3"/></svg></span></button>
+      <button class="nav-drop-item" id="d-nd-std" onclick="dNavDropGo(event,'std',this)" role="option" aria-selected="false"><span class="nav-drop-ico" aria-hidden="true">&#128100;</span><span class="nav-drop-name">Standups</span><span class="nav-drop-tick"><svg viewBox="0 0 12 12" stroke-width="2.5"><polyline points="2 6 5 9 10 3"/></svg></span></button>
+      <button class="nav-drop-item" id="d-nd-del" onclick="dNavDropGo(event,'del',this)" role="option" aria-selected="false"><span class="nav-drop-ico" aria-hidden="true">&#128666;</span><span class="nav-drop-name">Delivery</span><span class="nav-drop-tick"><svg viewBox="0 0 12 12" stroke-width="2.5"><polyline points="2 6 5 9 10 3"/></svg></span></button>
+    </div>
+  </div>
+  <div class="nav-drop-scrim" id="d-nav-drop-scrim" onclick="dCloseNavDrop()"></div>
+  <nav class="nav" role="navigation" aria-label="Dashboard sections">
+    <button class="ntab on" onclick="dGo('ov',this)" aria-selected="true"><span class="nico" aria-hidden="true">&#9635;</span>Overview</button>
+    <button class="ntab" onclick="dGo('fin',this)" aria-selected="false"><span class="nico" aria-hidden="true">&#128176;</span>Finance</button>
+    <button class="ntab" onclick="dGo('tsk',this)" aria-selected="false"><span class="nico" aria-hidden="true">&#9989;</span>Tasks</button>
+    <button class="ntab" onclick="dGo('mkt',this)" aria-selected="false"><span class="nico" aria-hidden="true">&#128227;</span>Marketing</button>
+    <button class="ntab" onclick="dGo('ops',this)" aria-selected="false"><span class="nico" aria-hidden="true">&#9881;&#65039;</span>Ops</button>
+    <button class="ntab" onclick="dGo('std',this)" aria-selected="false"><span class="nico" aria-hidden="true">&#128100;</span>Standups</button>
+    <button class="ntab" onclick="dGo('del',this)" aria-selected="false"><span class="nico" aria-hidden="true">&#128666;</span>Delivery</button>
+  </nav>
+  <div class="hdr" role="toolbar" aria-label="Controls">
+    <button class="rbtn on" onclick="dSetR('7d',this)" aria-pressed="true">7d</button>
+    <button class="rbtn" onclick="dSetR('30d',this)" aria-pressed="false">30d</button>
+    <button class="rbtn" onclick="dSetR('90d',this)" aria-pressed="false">90d</button>
+    <button class="calbtn" id="d-calbtn" onclick="dToggleCal()" aria-label="Custom date range" aria-expanded="false" aria-haspopup="dialog">
+      <svg viewBox="0 0 24 24" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span id="d-cal-label">Custom</span>
+    </button>
+    <button class="cmpbtn" id="d-cmpbtn" onclick="dToggleComp()" aria-pressed="false" title="Compare with prior period">
+      <div class="cbx" aria-hidden="true"></div>vs prior
+    </button>
+    <div class="clock" id="d-clock" aria-live="off" aria-label="Current time"></div>
+    <button class="ibtn" onclick="dToggleDark()" id="d-darkbtn" aria-label="Toggle dark mode" title="Toggle dark mode (D)">
+      <svg id="d-darkico" viewBox="0 0 24 24" stroke-width="1.8"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button class="ibtn" onclick="dOpenA11y()" aria-label="Accessibility options" title="Accessibility options">
+      <svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="5" r="1.5"/><path d="M9 9h6M12 9v5M10 20l2-6 2 6"/></svg>
+    </button>
+    <button class="ibtn" onclick="dExportSection()" aria-label="Print or export" title="Print / export">
+      <svg viewBox="0 0 24 24" stroke-width="1.8"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+    </button>
+  </div>
+</div>
+</header>
+
+<div class="mob-ov" id="d-mob-ov" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div class="mob-back" onclick="dCloseMob()"></div>
+  <div class="mob-pnl" id="d-mob-pnl">
+    <div class="mob-hd">
+      <span class="mob-logo">Simple<em>Dash</em></span>
+      <button class="mob-x" onclick="dCloseMob()" aria-label="Close menu">
+        <svg viewBox="0 0 24 24" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="mob-nav">
+      <button class="mobitem on" onclick="dMobGo('ov',this)"><span>&#9635;</span>Overview</button>
+      <button class="mobitem" onclick="dMobGo('fin',this)"><span>&#128176;</span>Finance</button>
+      <button class="mobitem" onclick="dMobGo('tsk',this)"><span>&#9989;</span>Tasks</button>
+      <button class="mobitem" onclick="dMobGo('mkt',this)"><span>&#128227;</span>Marketing</button>
+      <button class="mobitem" onclick="dMobGo('ops',this)"><span>&#9881;&#65039;</span>Operations</button>
+      <button class="mobitem" onclick="dMobGo('std',this)"><span>&#128100;</span>Standups</button>
+      <button class="mobitem" onclick="dMobGo('del',this)"><span>&#128666;</span>Delivery</button>
+    </div>
+    <div class="mob-foot">
+      <button class="rbtn on" onclick="dSetRMob('7d',this)">7d</button>
+      <button class="rbtn" onclick="dSetRMob('30d',this)">30d</button>
+      <button class="rbtn" onclick="dSetRMob('90d',this)">90d</button>
+    </div>
+  </div>
+</div>
+
+<!-- CALENDAR -->
+<div class="cal-ov" id="d-cal-ov" role="dialog" aria-modal="true" aria-label="Date range picker">
+  <div class="cal-scrim" onclick="dToggleCal()"></div>
+  <div class="cal-pnl" id="d-cal-pnl">
+    <div class="cal-disp" id="d-cal-disp" aria-live="polite">Select a start date</div>
+    <div class="cal-hint" id="d-cal-hint"></div>
+    <div class="cal-top">
+      <div class="cal-mo" id="d-cal-mo"></div>
+      <div class="cal-navs">
+        <button class="cal-arr" onclick="dCalNav(-1)" aria-label="Previous month">
+          <svg viewBox="0 0 12 12"><path d="M8 2L4 6L8 10"/></svg>
+        </button>
+        <button class="cal-arr" onclick="dCalNav(1)" aria-label="Next month">
+          <svg viewBox="0 0 12 12"><path d="M4 2L8 6L4 10"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="cal-grid" id="d-cal-grid" role="grid" aria-label="Calendar"></div>
+    <div class="cal-pres">
+      <button class="cpre on" onclick="dCalPre('7d',this)">Last 7 days</button>
+      <button class="cpre" onclick="dCalPre('30d',this)">Last 30 days</button>
+      <button class="cpre" onclick="dCalPre('90d',this)">Last 90 days</button>
+      <button class="cpre" onclick="dCalPre('mtd',this)">Month to date</button>
+      <button class="cpre" onclick="dCalPre('qtd',this)">Quarter to date</button>
+      <button class="cpre" onclick="dCalPre('ytd',this)">Year to date</button>
+    </div>
+  </div>
+</div>
+
+<!-- A11Y DIALOG -->
+<div class="a11y-ov" id="d-a11y-ov" role="dialog" aria-modal="true" aria-label="Accessibility options">
+  <div class="a11y-dlg" id="d-a11y-dlg">
+    <div class="a11y-h">
+      <div class="a11y-ttl">Accessibility</div>
+      <button class="ibtn" onclick="dCloseA11y()" aria-label="Close">
+        <svg viewBox="0 0 24 24" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="a11y-row">
+      <div><div class="a11y-lbl">Dark mode</div><div class="a11y-desc">Switch to a dark colour scheme</div></div>
+      <button class="tog" id="d-tog-dark" onclick="dToggleDark()" aria-label="Toggle dark mode"></button>
+    </div>
+    <div class="a11y-row">
+      <div><div class="a11y-lbl">High contrast</div><div class="a11y-desc">Increase border and text contrast</div></div>
+      <button class="tog" id="d-tog-hc" onclick="dToggleHC()" aria-label="Toggle high contrast"></button>
+    </div>
+    <div class="a11y-row">
+      <div><div class="a11y-lbl">Reduce motion</div><div class="a11y-desc">Disable all animations</div></div>
+      <button class="tog" id="d-tog-motion" onclick="dToggleMotion()" aria-label="Toggle reduce motion"></button>
+    </div>
+    <div class="a11y-row">
+      <div><div class="a11y-lbl">Larger text</div><div class="a11y-desc">Increase metric and content text size</div></div>
+      <button class="tog" id="d-tog-txt" onclick="dToggleBigTxt()" aria-label="Toggle larger text"></button>
+    </div>
+    <button class="a11y-ok" onclick="dCloseA11y()">Done</button>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="d-toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true"></div>
+
+<!-- MAIN CONTENT -->
+<div id="d-main" role="region" aria-label="Dashboard content" class="main" role="main">
+
+<div class="upd-bar" aria-live="polite">
+  <div class="upd-left">
+    <span class="upd-dot" aria-hidden="true"></span>
+    <span id="d-upd-time">Live data - last updated just now</span>
+  </div>
+  <button class="upd-btn" onclick="dRefreshAll()" aria-label="Refresh all data">Refresh</button>
+</div>
+
+<!-- OVERVIEW -->
+<section id="d-ov" class="pg on" aria-label="Business overview">
+  <div class="sec-bar">
+    <div class="sec-bar-left"><span class="sec-tag">Overview</span></div>
+    <div class="sec-bar-right">
+      <button class="sec-action-btn" onclick="dExportSection()"><svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Export</button>
+    </div>
+  </div>
+  <div class="ai-hero" role="region" aria-label="AI morning brief">
+    <div class="ai-hd">
+      <div class="ai-title"><span class="ai-spark" aria-hidden="true">&#10024;</span><span id="d-ai-title">AI morning brief - 3 things need your attention</span></div>
+      <div class="ai-time">Today, 9:02am</div>
+    </div>
+    <div class="ai-items">
+      <div class="ai-item" id="d-ai1">
+        <div class="ai-dot" style="background:var(--rd)" aria-hidden="true"></div>
+        <div class="ai-txt" id="d-ai1-txt"><strong>Hartley Co. invoice - 21 days overdue, £3,200.</strong> Past data shows a call today gives a 73% chance of same-week settlement. Email only: 41%.</div>
+      </div>
+      <div class="ai-item" id="d-ai2">
+        <div class="ai-dot" style="background:var(--rd)" aria-hidden="true"></div>
+        <div class="ai-txt" id="d-ai2-txt"><strong>Meta Retarget CPL is 2.5x your average (£8.25 vs £3.36).</strong> 84% audience overlap with Meta Spring. Pausing saves ~£230/week with minimal lead loss.</div>
+      </div>
+      <div class="ai-item" id="d-ai3">
+        <div class="ai-dot" style="background:var(--am)" aria-hidden="true"></div>
+        <div class="ai-txt" id="d-ai3-txt"><strong>SKU-2204 has 3 days of stock remaining.</strong> Reorder lead time is 5 days - you are already behind. Raise a PO today to avoid a stockout.</div>
+      </div>
+    </div>
+    <div class="actrow">
+      <button class="actbtn" onclick="dDoAct(this,'ai1','Reminder sent to Hartley Co.')">Send invoice reminder</button>
+      <button class="actbtn" onclick="dDoAct(this,'ai2','Meta Retarget paused')">Pause Meta Retarget</button>
+      <button class="actbtn" onclick="dDoAct(this,'ai3','Reorder raised for SKU-2204')">Reorder SKU-2204</button>
+    </div>
+    <div class="alog" id="d-alog"></div>
+  </div>
+  <div class="health-card" role="region" aria-label="Business health score">
+    <div class="health-ring" aria-hidden="true">
+      <svg viewBox="0 0 72 72"><circle class="health-ring-bg" cx="36" cy="36" r="30"/><circle class="health-ring-fill" id="d-health-arc" cx="36" cy="36" r="30" stroke="#C8421A" stroke-dasharray="188.5" stroke-dashoffset="47"/></svg>
+      <div class="health-score"><span class="health-num" id="d-health-num">75</span><span class="health-lbl">score</span></div>
+    </div>
+    <div class="health-detail">
+      <div class="health-title">Business health: <span id="d-health-label">Good</span></div>
+      <div class="health-sub" id="d-health-sub">3 items need attention today. Everything else is running normally.</div>
+      <div class="health-items">
+        <div class="health-item"><span class="health-item-dot" style="background:var(--rd)"></span>2 high priority alerts</div>
+        <div class="health-item"><span class="health-item-dot" style="background:var(--am)"></span>3 items to monitor</div>
+        <div class="health-item"><span class="health-item-dot" style="background:var(--gn)"></span>Finance and delivery on track</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="g6">
+    <div class="rag" onclick="dGo('fin',dQTab('fin'));dSyncNavDrop('fin');" role="button" tabindex="0" aria-label="Finance - on track. Click to view."><div class="rag-ind"><div class="rag-dot" style="background:var(--gn)"></div><div class="rag-nm">Finance</div></div><div class="rag-sub" id="d-rag-fin">Margin +3pts vs target</div><span class="rag-arrow" aria-hidden="true">&#8250;</span></div>
+    <div class="rag" onclick="dGo('fin',dQTab('fin'));dSyncNavDrop('fin');" role="button" tabindex="0" aria-label="Invoices - needs attention. Click to view."><div class="rag-ind"><div class="rag-dot" style="background:var(--rd)"></div><div class="rag-nm">Invoices</div></div><div class="rag-sub" id="d-rag-inv" style="position:relative"><span class="rag-badge" aria-label="3 alerts">3</span>£8,450 overdue</div><span class="rag-arrow" aria-hidden="true">&#8250;</span></div>
+    <div class="rag" onclick="dGo('tsk',dQTab('tsk'));dSyncNavDrop('tsk');" role="button" tabindex="0" aria-label="Tasks - monitor. Click to view."><div class="rag-ind"><div class="rag-dot" style="background:var(--am)"></div><div class="rag-nm">Tasks</div></div><div class="rag-sub" id="d-rag-tsk" style="position:relative"><span class="rag-badge" aria-label="3 alerts">3</span>3 blocked, 2 at risk</div><span class="rag-arrow" aria-hidden="true">&#8250;</span></div>
+    <div class="rag" onclick="dGo('mkt',dQTab('mkt'));dSyncNavDrop('mkt');" role="button" tabindex="0" aria-label="Marketing - needs attention. Click to view."><div class="rag-ind"><div class="rag-dot" style="background:var(--rd)"></div><div class="rag-nm">Marketing</div></div><div class="rag-sub" id="d-rag-mkt" style="position:relative"><span class="rag-badge" aria-label="1 alerts">1</span>1 campaign over CPL target</div><span class="rag-arrow" aria-hidden="true">&#8250;</span></div>
+    <div class="rag" onclick="dGo('del',dQTab('del'));dSyncNavDrop('del');" role="button" tabindex="0" aria-label="Delivery - on track. Click to view."><div class="rag-ind"><div class="rag-dot" style="background:var(--gn)"></div><div class="rag-nm">Delivery</div></div><div class="rag-sub" id="d-rag-del">92% on-time, above target</div><span class="rag-arrow" aria-hidden="true">&#8250;</span></div>
+    <div class="rag" onclick="dGo('ops',dQTab('ops'));dSyncNavDrop('ops');" role="button" tabindex="0" aria-label="Ops - monitor. Click to view."><div class="rag-ind"><div class="rag-dot" style="background:var(--am)"></div><div class="rag-nm">Ops</div></div><div class="rag-sub" id="d-rag-ops" style="position:relative"><span class="rag-badge" aria-label="2 alerts">2</span>SKU-2204 stock low</div><span class="rag-arrow" aria-hidden="true">&#8250;</span></div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="ch">
+        <div class="ct">Revenue trend</div>
+        <div class="cmeta">
+          <div class="leg" id="d-ov-leg" style="display:none"><div class="legi"><span class="legsq" style="background:var(--ac)"></span>Current</div><div class="legi"><span class="legdash"></span>Prior</div></div>
+          <div class="badge" id="d-ov-badge">Last 7 days</div>
+        </div>
+      </div>
+      <div class="cw h190"><canvas id="d-ovC" role="img" aria-label="Revenue trend chart">Revenue rising week on week.</canvas></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct">Business snapshot</div><div class="badge" id="d-ov-snap">7 days</div></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <div class="metric or"><div class="ml">Revenue MTD</div><div class="mv" id="d-ov-rev">£47,320</div><div class="mc" id="d-ov-rev-c"></div><svg class="spark" viewBox="0 0 60 24" preserveAspectRatio="none" aria-hidden="true"><path class="spark-up" d="M0,18 L10,16 L20,19 L30,13 L40,10 L50,8 L60,4"/></svg></div>
+        <div class="metric re"><div class="ml">Overdue invoices</div><div class="mv">£8,450</div><svg class="spark" viewBox="0 0 60 24" preserveAspectRatio="none" aria-hidden="true"><path class="spark-dn" d="M0,6 L10,8 L20,7 L30,10 L40,14 L50,16 L60,19"/></svg></div>
+        <div class="metric bl"><div class="ml">Open tasks</div><div class="mv">34</div></div>
+        <div class="metric gr"><div class="ml">On-time delivery</div><div class="mv">92%</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCE -->
+<section id="d-fin" class="pg" aria-label="Finance">
+  <div class="sec-bar">
+    <div class="sec-bar-left"><span class="sec-tag">Finance</span></div>
+    <div class="sec-bar-right">
+      <button class="sec-action-btn" onclick="dExportSection()"><svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Export</button>
+    </div>
+  </div>
+  <div class="g4">
+    <div class="metric or"><div class="ml">Revenue this month</div><div class="mv" id="d-fin-rev">£47,320</div><div class="md up" id="d-fin-revd">+18% vs last month</div><div class="mc" id="d-fin-rev-c"></div></div>
+    <div class="metric re"><div class="ml">Outstanding invoices</div><div class="mv">£8,450</div><div class="md dn">3 overdue 14d+</div></div>
+    <div class="metric gr"><div class="ml">Monthly expenses</div><div class="mv" id="d-fin-exp">£21,100</div><div class="md up">Within budget</div><div class="mc" id="d-fin-exp-c"></div></div>
+    <div class="metric bl"><div class="ml">Profit margin</div><div class="mv" id="d-fin-mg">44%</div><div class="md up" id="d-fin-mgd">+3pts vs target</div></div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="ch">
+        <div class="ct">Revenue vs expenses</div>
+        <div class="cmeta">
+          <div class="leg"><div class="legi"><span class="legsq" style="background:var(--ac)"></span>Revenue</div><div class="legi"><span class="legsq" style="background:var(--bl)"></span>Expenses</div><div class="legi" id="d-fin-comp-leg" style="display:none"><span class="legdash"></span>Rev (prior)</div></div>
+          <div class="badge" id="d-fin-badge">Last 7 days</div>
+        </div>
+      </div>
+      <div class="cw h190"><canvas id="d-finC" role="img" aria-label="Revenue versus expenses by week">Revenue outpacing expenses every week.</canvas></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct">Top unpaid invoices</div><div class="badge br">3 overdue</div></div>
+      <div class="twrap">
+        <table>
+          <tr><th>Client</th><th>Amount</th><th>Overdue</th></tr>
+          <tr><td>Hartley Co.</td><td>£3,200</td><td><span class="pill pr2">21 days</span></td></tr>
+          <tr><td>Greenfield Ltd</td><td>£2,800</td><td><span class="pill pa2">14 days</span></td></tr>
+          <tr><td>Vickers Ltd</td><td>£2,450</td><td><span class="pill pb2">8 days</span></td></tr>
+        </table>
+      </div>
+      <div class="ai-ins">
+        <div class="ai-lbl">AI insight</div>
+        <div class="ai-t" id="d-mkt-ai">Call Hartley Co. today - 73% chance of same-week payment vs 41% by email alone. Worth £3,200 in cash flow this week.</div>
+        <div class="actrow"><button class="actbtn" onclick="dMb(this,'Reminder sent to Hartley Co.')">Send reminder</button><button class="actbtn" onclick="dMb(this,'Client record opened')">View client</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TASKS -->
+<section id="d-tsk" class="pg" aria-label="Tasks">
+  <div class="sec-bar">
+    <div class="sec-bar-left"><span class="sec-tag">Tasks</span></div>
+    <div class="sec-bar-right">
+      <button class="sec-action-btn" onclick="dExportSection()"><svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Export</button>
+    </div>
+  </div>
+  <div class="g4">
+    <div class="metric bl"><div class="ml">Open tasks</div><div class="mv">34</div><div class="md nt">All projects</div></div>
+    <div class="metric or"><div class="ml">Due today</div><div class="mv">7</div><div class="md dn">2 at risk</div></div>
+    <div class="metric gr"><div class="ml">Completed <span id="d-tsk-per">this week</span></div><div class="mv" id="d-tsk-done">19</div><div class="md up">+4 vs prior period</div></div>
+    <div class="metric re"><div class="ml">Blocked</div><div class="mv">3</div><div class="md dn">Needs attention</div></div>
+  </div>
+  <div class="g2r">
+    <div class="card">
+      <div class="ch"><div class="ct">Project progress</div></div>
+      <div class="prog"><div class="phd"><span id="d-proj1-name">Website relaunch</span><span id="d-proj1-pct">72%</span></div><div class="ptrk"><div class="pfil" id="d-proj1-bar" style="width:72%;background:var(--ac)"></div></div></div>
+      <div class="prog"><div class="phd"><span id="d-proj2-name">Q2 ops review</span><span id="d-proj2-pct">45%</span></div><div class="ptrk"><div class="pfil" id="d-proj2-bar" style="width:45%;background:var(--bl)"></div></div></div>
+      <div class="prog"><div class="phd"><span id="d-proj3-name">New hire setup</span><span id="d-proj3-pct">90%</span></div><div class="ptrk"><div class="pfil" id="d-proj3-bar" style="width:90%;background:var(--gn)"></div></div></div>
+      <div class="cw h145" style="margin-top:14px"><canvas id="d-tskC" role="img" aria-label="Tasks completed per day this week">Completions rise midweek.</canvas></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct">Task board</div></div>
+      <div class="twrap">
+        <table>
+          <tr><th>Task</th><th>Owner</th><th>Due</th><th>Status</th></tr>
+          <tr><td>Q2 financial report</td><td>Sarah</td><td>Today</td><td><span class="pill pa2">In progress</span></td></tr>
+          <tr><td>Update supplier terms</td><td>James</td><td>Today</td><td><span class="pill pr2">Blocked</span></td></tr>
+          <tr><td>New client onboarding</td><td>Priya</td><td>Thu</td><td><span class="pill pg2">On track</span></td></tr>
+          <tr><td>Website copy review</td><td>Tom</td><td>Fri</td><td><span class="pill pb2">Not started</span></td></tr>
+        </table>
+      </div>
+      <div class="ai-ins">
+        <div class="ai-lbl">AI insight</div>
+        <div class="ai-t" id="d-fin-ai">James is blocking 2 tasks. At current pace Q2 ops review misses its deadline by 4 days - a 15-minute sync today unblocks both.</div>
+        <div class="actrow"><button class="actbtn" onclick="dMb(this,'Message sent to James')">Ping James</button><button class="actbtn" onclick="dMb(this,'Meeting booked with James')">Book sync</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARKETING -->
+<section id="d-mkt" class="pg" aria-label="Marketing">
+  <div class="sec-bar">
+    <div class="sec-bar-left"><span class="sec-tag">Marketing</span></div>
+    <div class="sec-bar-right">
+      <button class="sec-action-btn" onclick="dExportSection()"><svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Export</button>
+    </div>
+  </div>
+  <div class="g4">
+    <div class="metric re"><div class="ml">Ad spend <span id="d-mkt-per">today</span></div><div class="mv" id="d-mkt-sp">£184</div><div class="md dn">2 campaigns over target</div><div class="mc" id="d-mkt-sp-c"></div></div>
+    <div class="metric gr"><div class="ml">New leads (7d)</div><div class="mv" id="d-mkt-ld">63</div><div class="md up">+22% vs last week</div><div class="mc" id="d-mkt-ld-c"></div></div>
+    <div class="metric or"><div class="ml">Cost per lead</div><div class="mv" id="d-mkt-cpl">£11.40</div><div class="md up">Down from £14.20</div></div>
+    <div class="metric bl"><div class="ml">Social reach</div><div class="mv" id="d-mkt-rch">14.2k</div><div class="md up">+8% this week</div></div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="ch">
+        <div class="ct">Leads by day</div>
+        <div class="cmeta">
+          <div class="leg" id="d-mkt-leg" style="display:none"><div class="legi"><span class="legsq" style="background:var(--bl)"></span>Current</div><div class="legi"><span class="legdash"></span>Prior</div></div>
+          <div class="badge" id="d-mkt-badge">Last 7 days</div>
+        </div>
+      </div>
+      <div class="cw h190"><canvas id="d-mktC" role="img" aria-label="Daily lead count">Leads highest on Friday.</canvas></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct">Campaign performance</div></div>
+      <div class="twrap">
+        <table>
+          <tr><th>Campaign</th><th>Spend</th><th>Leads</th><th>CPL</th><th>Status</th></tr>
+          <tr><td>Meta Spring</td><td>£94</td><td>28</td><td>£3.36</td><td><span class="pill pg2">Good</span></td></tr>
+          <tr><td>Google Brand</td><td>£57</td><td>19</td><td>£3.00</td><td><span class="pill pg2">Good</span></td></tr>
+          <tr><td>Meta Retarget</td><td>£33</td><td>4</td><td>£8.25</td><td><span class="pill pr2">Poor</span></td></tr>
+        </table>
+      </div>
+      <div class="ai-ins">
+        <div class="ai-lbl">AI insight</div>
+        <div class="ai-t" id="d-tsk-ai">Meta Retarget CPL is 2.5x your average. Audience overlaps 84% with Meta Spring - pausing saves ~£230/week at near-zero lead loss.</div>
+        <div class="actrow"><button class="actbtn" onclick="dMb(this,'Meta Retarget paused')">Pause campaign</button><button class="actbtn" onclick="dMb(this,'Overlap report opened')">View overlap</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPS -->
+<section id="d-ops" class="pg" aria-label="Operations">
+  <div class="sec-bar">
+    <div class="sec-bar-left"><span class="sec-tag">Operations</span></div>
+    <div class="sec-bar-right">
+      <button class="sec-action-btn" onclick="dExportSection()"><svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Export</button>
+    </div>
+  </div>
+  <div class="g4">
+    <div class="metric re"><div class="ml">Open tickets</div><div class="mv">12</div><div class="md dn">3 unassigned</div></div>
+    <div class="metric bl"><div class="ml">Avg response time</div><div class="mv">4.2h</div><div class="md up">Within SLA</div></div>
+    <div class="metric or"><div class="ml">Stock alerts</div><div class="mv">5</div><div class="md dn">Below reorder level</div></div>
+    <div class="metric gr"><div class="ml">Team utilisation</div><div class="mv">81%</div><div class="md up">Healthy range</div></div>
+  </div>
+  <div class="card">
+    <div class="ch"><div class="ct">Operations alerts</div><div class="badge ba">4 active</div></div>
+    <div class="ali"><span class="al-tx">SKU-2204 stock at 8 units - 3 days remaining, reorder lead time 5 days</span><span class="pill pr2">High</span></div>
+    <div class="ali"><span class="al-tx">3 support tickets unassigned - oldest is 6h old, SLA breach in 2h</span><span class="pill pa2">Med</span></div>
+    <div class="ali"><span class="al-tx">Invoice #2041 not yet sent - customer due date in 2 days</span><span class="pill pa2">Med</span></div>
+    <div class="ali"><span class="al-tx">Hallmark supplier contract expires in 14 days</span><span class="pill pb2">Low</span></div>
+    <div class="ai-ins">
+      <div class="ai-lbl">AI insight</div>
+      <div class="ai-t" id="d-ops-ai">You are already behind the reorder lead time for SKU-2204 - order today or face a stockout. Unassigned tickets will breach SLA in 2 hours.</div>
+      <div class="actrow"><button class="actbtn" onclick="dMb(this,'Reorder raised for SKU-2204')">Reorder now</button><button class="actbtn" onclick="dMb(this,'Tickets assigned evenly')">Assign tickets</button><button class="actbtn" onclick="dMb(this,'Invoice #2041 sent')">Send invoice</button></div>
+    </div>
+  </div>
+</section>
+
+<!-- STANDUPS -->
+<section id="d-std" class="pg" aria-label="Team standups">
+  <div class="sec-bar">
+    <div class="sec-bar-left"><span class="sec-tag">Standups</span></div>
+    <div class="sec-bar-right">
+      <button class="sec-action-btn" onclick="dExportSection()"><svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Export</button>
+    </div>
+  </div>
+  <div class="g4">
+    <div class="metric gr"><div class="ml">Standups logged</div><div class="mv">8/9</div><div class="md nt">1 outstanding</div></div>
+    <div class="metric re"><div class="ml">Blockers raised</div><div class="mv">2</div><div class="md dn">Flagged to you</div></div>
+    <div class="metric or"><div class="ml">AI summary</div><div class="mv">Ready</div><div class="md up">Generated 9:02am</div></div>
+    <div class="metric bl"><div class="ml">Avg response time</div><div class="mv">8 min</div><div class="md nt">This week</div></div>
+  </div>
+  <div class="g2r">
+    <div class="card">
+      <div class="ch"><div class="ct">AI morning summary</div><div class="badge">9:02am</div></div>
+      <div class="ai-ins" style="margin-top:0">
+        <div class="ai-lbl">AI summary</div>
+        <div class="ai-t">2 blockers today: Sarah needs James sign-off on Q2 figures. Priya welcome pack not printed for her 2pm call. Tom is clear to go live. Alex has not submitted - last online 8:30am.</div>
+        <div class="actrow" style="margin-top:8px"><button class="actbtn" onclick="dMb(this,'Reminder sent to James')">Remind James</button><button class="actbtn" onclick="dMb(this,'Chase sent to Alex')">Chase Alex</button></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct">Team standup feed</div></div>
+      <div class="su"><div class="av" style="background:var(--gnbg);color:var(--gn)">SR</div><div><div class="su-tx"><span class="su-nm">Sarah R.</span> - Q2 report blocked on James sign-off on the figures.</div><div class="su-ti">8:54am</div></div></div>
+      <div class="su"><div class="av" style="background:var(--blbg);color:var(--bl)">TM</div><div><div class="su-tx"><span class="su-nm">Tom M.</span> - Website copy going live this afternoon. No blockers.</div><div class="su-ti">9:01am</div></div></div>
+      <div class="su"><div class="av" style="background:var(--ambg);color:var(--am)">PK</div><div><div class="su-tx"><span class="su-nm">Priya K.</span> - Client onboarding at 2pm. Welcome pack still needs printing.</div><div class="su-ti">9:08am</div></div></div>
+      <div class="su"><div class="av" style="background:var(--rdbg);color:var(--rd)">AL</div><div><div class="su-tx"><span class="su-nm">Alex L.</span> - No standup submitted yet.</div><div class="su-ti" style="color:var(--rd)">Outstanding</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERY -->
+<section id="d-del" class="pg" aria-label="Delivery">
+  <div class="sec-bar">
+    <div class="sec-bar-left"><span class="sec-tag">Delivery</span></div>
+    <div class="sec-bar-right">
+      <button class="sec-action-btn" onclick="dExportSection()"><svg viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>Export</button>
+    </div>
+  </div>
+  <div class="g4">
+    <div class="metric bl"><div class="ml">Orders in transit</div><div class="mv">28</div><div class="md nt">All on schedule</div></div>
+    <div class="metric re"><div class="ml">Late deliveries</div><div class="mv">3</div><div class="md dn">Not yet notified</div></div>
+    <div class="metric gr"><div class="ml">Delivered today</div><div class="mv">14</div><div class="md up">All on time</div></div>
+    <div class="metric or"><div class="ml">On-time rate</div><div class="mv">92%</div><div class="md up">Target: 90% &#x2713;</div></div>
+  </div>
+  <div class="g2">
+    <div class="card">
+      <div class="ch">
+        <div class="ct">On-time delivery rate</div>
+        <div class="cmeta">
+          <div class="leg" id="d-del-leg" style="display:none"><div class="legi"><span class="legsq" style="background:var(--gn)"></span>Current</div><div class="legi"><span class="legdash"></span>Prior</div></div>
+          <div class="badge" id="d-del-badge">Last 8 weeks</div>
+        </div>
+      </div>
+      <div class="cw h190"><canvas id="d-delC" role="img" aria-label="Weekly on-time delivery rate">Rate above 87% every week.</canvas></div>
+    </div>
+    <div class="card">
+      <div class="ch"><div class="ct">Late deliveries - action needed</div></div>
+      <div class="twrap">
+        <table>
+          <tr><th>Order</th><th>Customer</th><th>Delay</th><th>Action</th></tr>
+          <tr><td>#10492</td><td>Helen B.</td><td>2 days</td><td><span class="pill pr2">Notify</span></td></tr>
+          <tr><td>#10488</td><td>Marcus T.</td><td>1 day</td><td><span class="pill pr2">Notify</span></td></tr>
+          <tr><td>#10501</td><td>Clio Design</td><td>At risk</td><td><span class="pill pa2">Monitor</span></td></tr>
+        </table>
+      </div>
+      <div class="ai-ins">
+        <div class="ai-lbl">AI insight</div>
+        <div class="ai-t" id="d-del-ai">3 customers not yet notified of delays. Proactive updates cut complaint rate by ~60% and refund requests by ~30%. Draft messages are ready.</div>
+        <div class="actrow"><button class="actbtn" onclick="dMb(this,'All 3 customers notified')">Send all notifications</button></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</div><!-- end .dash-embed -->
+
+  </div><!-- end .dash-frame -->
+  <p class="dash-caption">Explore every section above - or <button onclick="openFullscreen()">open full screen</button> for the best experience. Ready to see it with your own data? <button onclick="openBooking()">Book a free call.</button></p>
+</div><!-- end .persona-band -->
+
+<!-- PROBLEM SECTION -->
+<section class="section" id="problem" aria-labelledby="problem-h">
+  <div class="section-eyebrow">The problem</div>
+  <h2 class="section-h" id="problem-h">Your business data is <em>everywhere except one place.</em></h2>
+  <p class="section-sub" style="margin-bottom:36px">Most business owners log into 6 to 10 different tools every morning just to understand how the day is going. By the time you have checked everything, an hour is gone.</p>
+  <div class="prob-grid">
+    <div class="prob-card">
+      <div class="prob-ico" aria-hidden="true">&#128336;</div>
+      <h3>45 minutes gone before you start</h3>
+      <p>Xero for finance, Trello for tasks, Meta Ads for spend, Shopify for orders. Every morning, the same loop. An hour wasted before you have done a single productive thing.</p>
+    </div>
+    <div class="prob-card">
+      <div class="prob-ico" aria-hidden="true">&#128683;</div>
+      <h3>Problems hide until it is too late</h3>
+      <p>A delivery is running late. An ad is burning money with no leads. A task has been blocked for a week. You find out because you happened to be in that tab at the wrong time - or you do not find out at all.</p>
+    </div>
+    <div class="prob-card">
+      <div class="prob-ico" aria-hidden="true">&#9888;&#65039;</div>
+      <h3>No single source of truth</h3>
+      <p>Everyone has their own spreadsheet. Nothing talks to anything else. Meetings are spent debating which numbers are right rather than making decisions from them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" id="how" aria-labelledby="how-h">
+  <div class="section-eyebrow">How it works</div>
+  <h2 class="section-h" id="how-h">One call. Built in 14 days. <em>Running forever.</em></h2>
+  <p class="section-sub" style="margin-bottom:0">We handle everything. You open one screen every morning and know exactly what matters.</p>
+  <div class="steps-grid">
+    <div class="step-card"><div class="step-week">Day 1</div><h3>Free strategy call</h3><p>We understand your business and tools. You see a demo with data from a similar business. No commitment required.</p></div>
+    <div class="step-card"><div class="step-week">Days 2-7</div><h3>We build your dashboard</h3><p>Our team connects your tools, sets up the data flows and builds your custom modules. You do not need to do anything.</p></div>
+    <div class="step-card featured"><span class="step-live">Live</span><div class="step-week">Day 14</div><h3>Your dashboard goes live</h3><p>We onboard your whole team and hand it over. If it is not live in 14 days, you get a full refund - no questions.</p></div>
+    <div class="step-card"><div class="step-week">Day 15+</div><h3>30 days of support</h3><p>We fix anything that is off and add anything we missed. After 30 days, ongoing support is available from &pound;297/month.</p></div>
+  </div>
+  <div class="int-wrap">
+    <p style="font-size:14px;color:var(--s-ink2);font-weight:500">Connects to your existing tools - including:</p>
+    <div class="int-flex">
+      <span class="int-pill">Xero</span><span class="int-pill">QuickBooks</span><span class="int-pill">Stripe</span><span class="int-pill">Shopify</span><span class="int-pill">WooCommerce</span><span class="int-pill">Meta Ads</span><span class="int-pill">Google Ads</span><span class="int-pill">HubSpot</span><span class="int-pill">Salesforce</span><span class="int-pill">Slack</span><span class="int-pill">Trello</span><span class="int-pill">Jira</span><span class="int-pill">Notion</span><span class="int-pill">DPD / Evri</span><span class="int-pill">Google Sheets</span><span class="int-pill">Instagram</span><span style="font-size:13px;color:var(--s-ink3);align-self:center;margin-left:6px">+ 44 more</span>
+    </div>
+  </div>
+  <div class="compare-grid">
+    <div class="compare-col">
+      <div class="compare-head"><span style="color:var(--s-rd)">&#10007;</span> Doing it yourself</div>
+      <div class="ci"><span class="ci-mark" style="color:var(--s-rd)">&#10007;</span>Months of research and broken automations</div>
+      <div class="ci"><span class="ci-mark" style="color:var(--s-rd)">&#10007;</span>A dashboard only you understand</div>
+      <div class="ci"><span class="ci-mark" style="color:var(--s-rd)">&#10007;</span>Developers who disappear mid-project</div>
+      <div class="ci"><span class="ci-mark" style="color:var(--s-rd)">&#10007;</span>Static data that is already out of date</div>
+      <div class="ci"><span class="ci-mark" style="color:var(--s-rd)">&#10007;</span>&pound;6,000-&pound;15,000 and 3-6 months minimum</div>
+      <div class="ci"><span class="ci-mark" style="color:var(--s-rd)">&#10007;</span>Nobody to call when it breaks</div>
+    </div>
+    <div class="compare-col good">
+      <div class="compare-head" style="color:var(--s-gn)"><span>&#10003;</span> Using SimpleDash</div>
+      <div class="ci"><span class="ci-mark" style="color:var(--s-gn)">&#10003;</span>One 1-hour call and we handle everything</div>
+      <div class="ci"><span class="ci-mark" style="color:var(--s-gn)">&#10003;</span>Built for your whole team from day one</div>
+      <div class="ci"><span class="ci-mark" style="color:var(--s-gn)">&#10003;</span>One fixed price, no scope creep</div>
+      <div class="ci"><span class="ci-mark" style="color:var(--s-gn)">&#10003;</span>Live data with AI that flags problems automatically</div>
+      <div class="ci"><span class="ci-mark" style="color:var(--s-gn)">&#10003;</span>&pound;2,997 and live in 14 days</div>
+      <div class="ci"><span class="ci-mark" style="color:var(--s-gn)">&#10003;</span>30 days of support after launch</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="section" id="offer" aria-labelledby="offer-h">
+  <div class="section-eyebrow">Pricing</div>
+  <h2 class="section-h" id="offer-h">One price. Everything included. <em>No surprises.</em></h2>
+  <p class="section-sub" style="margin-bottom:0">No monthly retainer to get started. No hidden extras. One payment, your full dashboard built and live.</p>
+  <div class="price-outer">
+    <div class="price-card" role="region" aria-label="Pricing details">
+      <span class="price-tag">Full dashboard build</span>
+      <div class="price-num">&pound;2,997</div>
+      <p class="price-desc">One payment. Live in 14 days or we refund you in full.</p>
+      <div class="val-stack" aria-label="What this would cost elsewhere">
+        <div class="vs-row"><span class="vs-lbl">Custom dashboard design and build</span><span class="vs-p">&pound;5,000</span></div>
+        <div class="vs-row"><span class="vs-lbl">All integrations set up and tested</span><span class="vs-p">&pound;3,000</span></div>
+        <div class="vs-row"><span class="vs-lbl">Claude AI layer and insights</span><span class="vs-p">&pound;2,000</span></div>
+        <div class="vs-row"><span class="vs-lbl">Team onboarding session</span><span class="vs-p">&pound;800</span></div>
+        <div class="vs-row"><span class="vs-lbl">30 days of support</span><span class="vs-p">&pound;600</span></div>
+        <div class="vs-row"><span class="vs-lbl" style="font-weight:600;color:var(--s-ink)">You pay</span><span class="vs-p">&pound;2,997</span></div>
+      </div>
+      <div class="price-items">
+        <div class="pi"><span class="pi-tick">&#10003;</span>Custom dashboard for your business</div>
+        <div class="pi"><span class="pi-tick">&#10003;</span>All tools connected and syncing live</div>
+        <div class="pi"><span class="pi-tick">&#10003;</span>AI that spots problems before you do</div>
+        <div class="pi"><span class="pi-tick">&#10003;</span>Finance, tasks, marketing, ops, delivery</div>
+        <div class="pi"><span class="pi-tick">&#10003;</span>Full team onboarding included</div>
+        <div class="pi"><span class="pi-tick">&#10003;</span>30 days of support after launch</div>
+        <div class="pi"><span class="pi-tick">&#10003;</span>Free strategy call before you commit</div>
+        <div class="pi"><span class="pi-tick">&#10003;</span>14-day money-back guarantee</div>
+      </div>
+      <button class="price-btn" onclick="openBooking()">Book your free strategy call &rarr;</button>
+      <div class="price-guar"><span>&#128737;&#65039;</span> If your dashboard is not live in 14 days, we refund you in full. No questions. No arguments.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="testimonials" aria-labelledby="testi-h">
+  <div class="section-eyebrow">Real results</div>
+  <h2 class="section-h" id="testi-h">What our clients <em>actually say.</em></h2>
+  <div class="testi-grid">
+    <div class="testi">
+      <div class="testi-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="testi-q">"I used to spend the first hour of every day pulling numbers from different places. Now I open one screen and know everything in 30 seconds. I genuinely cannot imagine going back."</p>
+      <div class="testi-person"><div class="testi-av" aria-hidden="true">RK</div><div><div class="testi-name">Rachel K.</div><div class="testi-role">Founder, Bloom Supply Co.</div></div></div>
+      <div class="testi-result" role="note">&#8593; 1 hour saved every single morning</div>
+    </div>
+    <div class="testi">
+      <div class="testi-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="testi-q">"We caught a campaign burning &pound;400 a day with almost no leads. It flagged in the dashboard and we killed it the same morning. That alone paid for the whole thing twice over."</p>
+      <div class="testi-person"><div class="testi-av" aria-hidden="true">TM</div><div><div class="testi-name">Tom M.</div><div class="testi-role">Director, Oakfield Group</div></div></div>
+      <div class="testi-result" role="note">&#8593; &pound;8k in wasted ad spend caught</div>
+    </div>
+    <div class="testi">
+      <div class="testi-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+      <p class="testi-q">"Our team meetings used to start with 20 minutes of everyone sharing spreadsheets. Now we look at the dashboard and jump straight into decisions. It has changed how we work."</p>
+      <div class="testi-person"><div class="testi-av" aria-hidden="true">SB</div><div><div class="testi-name">Sarah B.</div><div class="testi-role">COO, Bright Logistics</div></div></div>
+      <div class="testi-result" role="note">&#8593; 20 min cut from every team meeting</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq" aria-labelledby="faq-h">
+  <div class="section-eyebrow">Questions</div>
+  <h2 class="section-h" id="faq-h">You probably want to <em>know this.</em></h2>
+  <div class="faq-list" role="list">
+    <div class="faq-item" role="listitem"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">What tools can you connect to?<span class="faq-chev" aria-hidden="true">&#8964;</span></button><div class="faq-a">We support 60+ tools including Xero, QuickBooks, Stripe, Shopify, WooCommerce, HubSpot, Salesforce, Meta Ads, Google Ads, Slack, Trello, Jira, Notion, all major courier APIs, and most social platforms. If you use something specific, ask us on the call - if we do not support it already, we can usually add it.</div></div>
+    <div class="faq-item" role="listitem"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Do I need any technical skills?<span class="faq-chev" aria-hidden="true">&#8964;</span></button><div class="faq-a">None at all. We connect everything, set up all the data flows, and train your team to use it. If you can use a website, you can use your dashboard.</div></div>
+    <div class="faq-item" role="listitem"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How long does the build actually take?<span class="faq-chev" aria-hidden="true">&#8964;</span></button><div class="faq-a">Most dashboards go live in 10 to 14 days. We start with a 1-hour call, then build and test with your real data before launch. If it is not live in 14 days, you get a full refund.</div></div>
+    <div class="faq-item" role="listitem"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Is my business data safe?<span class="faq-chev" aria-hidden="true">&#8964;</span></button><div class="faq-a">Yes. Your data is encrypted in transit and at rest, stored in the UK, and never shared with any third party or used to train AI models. We provide full data processing agreements on request and are GDPR compliant.</div></div>
+    <div class="faq-item" role="listitem"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">What happens after the 30 days of support?<span class="faq-chev" aria-hidden="true">&#8964;</span></button><div class="faq-a">Your dashboard keeps running. You can stay on a monthly maintenance plan from &pound;297/month. No lock-in - cancel any time. Most clients find it runs smoothly with very little ongoing maintenance.</div></div>
+    <div class="faq-item" role="listitem"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Can I see a demo before I commit?<span class="faq-chev" aria-hidden="true">&#8964;</span></button><div class="faq-a">Yes - you can explore the full interactive demo right now above. Switch between business types to see how it adapts. The free strategy call also includes a demo built with data from a business similar to yours.</div></div>
+    <div class="faq-item" role="listitem"><button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Is this right for my size of business?<span class="faq-chev" aria-hidden="true">&#8964;</span></button><div class="faq-a">SimpleDash works best for businesses with 3 to 100 people who use more than 3 tools. If you are a solo operator with just one or two tools, it is probably not the right fit - and we will tell you that honestly on the call.</div></div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="booking">
+  <div class="cta-box">
+    <h2 class="cta-h">Stop checking <em>8 tabs every morning.</em></h2>
+    <p class="cta-sub">Book a free 30-minute call. We show you what your dashboard could look like with your own tools and your own data. No pressure, no commitment.</p>
+    <div class="cta-btns">
+      <button class="btn-white" onclick="openBooking()">Book free call - 30 minutes &rarr;</button>
+      <a href="#demo" class="btn-ghost">Explore the demo first</a>
+    </div>
+    <div class="cta-trust">
+      <span>Free - no credit card needed</span>
+      <span>30 minutes</span>
+      <span>No hard sell</span>
+      <span>14-day money-back guarantee</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Simple<em>Dash</em></div>
+      <p class="footer-tagline">One AI-powered dashboard that connects every tool your business uses. Built in 14 days.</p>
+      <p style="font-size:12px;color:var(--s-ink3)">Powered by <strong style="color:var(--s-ink2)">Claude AI</strong></p>
+    </div>
+    <div>
+      <div class="footer-col-h">Product</div>
+      <div class="footer-col-links"><a href="#demo">Live demo</a><a href="#how">How it works</a><a href="#offer">Pricing</a><a href="#">Integrations</a></div>
+    </div>
+    <div>
+      <div class="footer-col-h">Company</div>
+      <div class="footer-col-links"><a href="#testimonials">Results</a><a href="#faq">FAQ</a><a href="#">Privacy policy</a><a href="#">Contact</a></div>
+    </div>
+    <div>
+      <div class="footer-col-h">Get started</div>
+      <p style="font-size:13px;color:var(--s-ink3);margin-bottom:12px;line-height:1.6">Free 30-minute call. See your dashboard with your own data.</p>
+      <button class="footer-mini-cta" onclick="openBooking()">Book free call &rarr;</button>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 SimpleDash. All rights reserved. Registered in England and Wales.</span>
+    <div class="footer-legal"><a href="#">Privacy</a><a href="#">Terms</a></div>
+  </div>
+</footer>
+
+<!-- DEMO CUSTOMISER PANEL -->
+<div class="cust-scrim" id="cust-scrim" onclick="closeCust()"></div>
+<div class="cust-panel" id="cust-panel" role="dialog" aria-modal="true" aria-label="Customise demo data">
+  <div class="cust-head">
+    <div>
+      <div class="cust-title">&#9881;&#65039; Customise this demo</div>
+      <div class="cust-sub">Type in your prospect's details and the dashboard updates live. Perfect for sales calls.</div>
+      <div class="cust-live-badge"><span class="cust-live-dot"></span>Live preview</div>
+    </div>
+    <button class="cust-x" onclick="closeCust()" aria-label="Close">&times;</button>
+  </div>
+  <div class="cust-body">
+    <div class="cust-section-head">Business identity</div>
+    <div class="cust-field">
+      <label class="cust-label" for="cust-company">Company name</label>
+      <input class="cust-input" type="text" id="cust-company" placeholder="e.g. Hartley Group" maxlength="40">
+    </div>
+    <div class="cust-row">
+      <div class="cust-field">
+        <label class="cust-label" for="cust-industry">Industry</label>
+        <select class="cust-input" id="cust-industry">
+          <option value="retail">E-commerce</option>
+          <option value="agency">Agency</option>
+          <option value="logistics">Logistics</option>
+        </select>
+      </div>
+      <div class="cust-field">
+        <label class="cust-label" for="cust-team">Team size</label>
+        <input class="cust-input" type="number" id="cust-team" placeholder="e.g. 24" min="1" max="999">
+      </div>
+    </div>
+
+    <div class="cust-section-head">Finance numbers</div>
+    <div class="cust-row">
+      <div class="cust-field">
+        <label class="cust-label" for="cust-rev">Monthly revenue</label>
+        <input class="cust-input" type="text" id="cust-rev" placeholder="e.g. £340,000">
+        <span class="cust-hint">Shown on overview + finance</span>
+      </div>
+      <div class="cust-field">
+        <label class="cust-label" for="cust-margin">Profit margin</label>
+        <input class="cust-input" type="text" id="cust-margin" placeholder="e.g. 38%">
+      </div>
+    </div>
+
+    <div class="cust-section-head">Operations</div>
+    <div class="cust-row">
+      <div class="cust-field">
+        <label class="cust-label" for="cust-tools">Tools connected</label>
+        <input class="cust-input" type="number" id="cust-tools" placeholder="e.g. 8" min="1" max="99">
+        <span class="cust-hint">Shown in AI brief</span>
+      </div>
+      <div class="cust-field">
+        <label class="cust-label" for="cust-leads">Monthly leads</label>
+        <input class="cust-input" type="number" id="cust-leads" placeholder="e.g. 240" min="0">
+      </div>
+    </div>
+
+    <div class="cust-preview" id="cust-preview" style="display:none">
+      <div class="cust-preview-label">Live preview</div>
+      <div id="cust-preview-items"></div>
+    </div>
+
+    <button class="cust-apply" onclick="applyCust()">Apply to dashboard &rarr;</button>
+    <button class="cust-reset" onclick="resetCust()">Reset to demo data</button>
+  </div>
+</div>
+
+</main>
+
+<script>
+
+/* === STATE === */
+var dS={range:'7d',comp:false,dark:false,hc:false,motion:true,bigtxt:false};
+var dCI={};
+var dActs=[];
+var dCalSt={year:2026,month:3,start:null,end:null,picking:false};
+var dUpdMin=0;
+
+/* === dGetData() === */
+var D={
+  '7d':{wk:['W1','W2','W3','W4','W5','W6','W7','W8'],rev:[9200,11400,8900,12100,13800,10500,14200,16200],exp:[5100,5400,4900,5800,5600,5200,5900,5700],revP:[8100,9800,7900,10200,11900,9200,12500,14800],ld:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],leads:[7,9,11,8,14,6,8],leadsP:[5,7,8,7,10,5,6],del:[91,88,90,93,89,92,94,92],delP:[88,86,89,90,87,89,91,90],revMTD:'£47,320',revD:'+18% vs last month',finExp:'£21,100',mg:'44%',mgD:'+3pts vs target',sp:'£184',ldt:'63',cpl:'£11.40',rch:'14.2k',tskDone:'19',badge:'Last 7 days',tskP:'this week',mktP:'today',revPr:'£39,900',expPr:'£44,100'},
+  '30d':{wk:['Wk1','Wk2','Wk3','Wk4'],rev:[38200,42100,45600,47320],exp:[19800,21000,20200,21100],revP:[33000,36500,40100,43200],ld:['Wk1','Wk2','Wk3','Wk4'],leads:[41,58,54,63],leadsP:[32,44,48,52],del:[89,91,90,92],delP:[86,88,87,90],revMTD:'£173,220',revD:'+12% vs prior 30d',finExp:'£82,100',mg:'42%',mgD:'+1pt vs target',sp:'£740',ldt:'216',cpl:'£13.20',rch:'52.8k',tskDone:'67',badge:'Last 30 days',tskP:'this month',mktP:'this month',revPr:'£152,800',expPr:'£156,800'},
+  '90d':{wk:['Jan','Feb','Mar','Apr'],rev:[129000,148000,164000,173220],exp:[68000,74000,79000,82100],revP:[105000,118000,131000,143000],ld:['Jan','Feb','Mar','Apr'],leads:[158,174,196,216],leadsP:[120,138,155,170],del:[87,89,91,92],delP:[84,86,88,89],revMTD:'£614,220',revD:'+26% vs prior 90d',finExp:'£303,100',mg:'40%',mgD:'On target',sp:'£2,210',ldt:'744',cpl:'£14.80',rch:'162k',tskDone:'198',badge:'Last 90 days',tskP:'this quarter',mktP:'this quarter',revPr:'£497,000',expPr:'£497,000'}
+};
+
+/* === HELPERS === */
+function d$id(id){return document.getElementById("d-"+id)}
+function dSet(id,v){var e=d$id(id);if(e)e.textContent=v}
+function dQTab(sec){return document.querySelector('.ntab[onclick*="\''+sec+'\'"]')}
+
+function dShowToast(msg){
+  var t=d$id('toast');if(!t)return;
+  t.textContent=msg;t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show')},2800);
+}
+
+/* === NAVIGATION === */
+function dGo(id,el){
+  document.querySelectorAll('.dash-embed .pg').forEach(function(p){p.classList.remove('on')});
+  var pg=d$id(id);if(pg)pg.classList.add('on');
+  document.querySelectorAll('.dash-embed .ntab').forEach(function(t){t.classList.remove('on');t.setAttribute('aria-selected','false')});
+  if(el){el.classList.add('on');el.setAttribute('aria-selected','true')}
+  // Keep side nav pill and items in sync
+  dSyncNavDrop(id);
+  var inits={ov:dIOv,fin:dIFin,tsk:dITsk,mkt:dIMkt,del:dIDel};
+  if(inits[id]&&!dCI[id+'_done']){dCI[id+'_done']=true;setTimeout(inits[id],60)}
+  else if(inits[id]){dRefreshCharts()}
+}
+
+function dMobGo(id,el){
+  document.querySelectorAll('.dash-embed .mobitem').forEach(function(i){i.classList.remove('on')});
+  if(el)el.classList.add('on');
+  dGo(id,dQTab(id));
+  dSyncNavDrop(id);
+  dCloseMob();
+}
+
+/* === RANGE === */
+function dSetR(r,el){
+  dS.range=r;
+  document.querySelectorAll('.dash-embed .rbtn').forEach(function(b){b.classList.remove('on');b.setAttribute('aria-pressed','false')});
+  if(el){el.classList.add('on');el.setAttribute('aria-pressed','true')}
+  dSyncMobRange();
+  document.querySelectorAll('.dash-embed .cpre').forEach(function(b){b.classList.toggle('on',!!b.getAttribute('onclick')&&b.getAttribute('onclick').indexOf("'"+r+"'")>-1)});
+  dSet('cal-label','Custom');document.getElementById('d-calbtn').classList.remove('on');
+  dApplyData();dRefreshCharts();setTimeout(dUpdateHealthScore,100);
+}
+function dSetRMob(r,el){
+  dSetR(r,null);
+  document.querySelectorAll('.dash-embed .mob-pnl .rbtn').forEach(function(b){b.classList.remove('on')});
+  if(el)el.classList.add('on');
+  document.querySelectorAll('.dash-embed .hdr .rbtn').forEach(function(b){b.classList.toggle('on',b.textContent.trim()===r)});
+}
+function dSyncMobRange(){
+  document.querySelectorAll('.dash-embed .mob-pnl .rbtn').forEach(function(b){b.classList.toggle('on',b.textContent.trim()===dS.range)});
+}
+
+
+/* === DASHBOARD DATA (proxies to persona data) === */
+function dGetData() {
+  if (typeof PERSONAS !== 'undefined' && typeof currentPersona !== 'undefined') {
+    var p = PERSONAS[currentPersona];
+    if (p && p.data && p.data[dS.range]) return p.data[dS.range];
+  }
+  // Fallback to inline data
+  var _D = {
+  '7d':{wk:['W1','W2','W3','W4','W5','W6','W7','W8'],rev:[9200,11400,8900,12100,13800,10500,14200,16200],exp:[5100,5400,4900,5800,5600,5200,5900,5700],revP:[8100,9800,7900,10200,11900,9200,12500,14800],ld:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],leads:[7,9,11,8,14,6,8],leadsP:[5,7,8,7,10,5,6],del:[91,88,90,93,89,92,94,92],delP:[88,86,89,90,87,89,91,90],revMTD:'£47,320',revD:'+18% vs last month',finExp:'£21,100',mg:'44%',mgD:'+3pts vs target',sp:'£184',ldt:'63',cpl:'£11.40',rch:'14.2k',tskDone:'19',badge:'Last 7 days',tskP:'this week',mktP:'today',revPr:'£39,900',expPr:'£44,100'},
+  '30d':{wk:['Wk1','Wk2','Wk3','Wk4'],rev:[38200,42100,45600,47320],exp:[19800,21000,20200,21100],revP:[33000,36500,40100,43200],ld:['Wk1','Wk2','Wk3','Wk4'],leads:[41,58,54,63],leadsP:[32,44,48,52],del:[89,91,90,92],delP:[86,88,87,90],revMTD:'£173,220',revD:'+12% vs prior 30d',finExp:'£82,100',mg:'42%',mgD:'+1pt vs target',sp:'£740',ldt:'216',cpl:'£13.20',rch:'52.8k',tskDone:'67',badge:'Last 30 days',tskP:'this month',mktP:'this month',revPr:'£152,800',expPr:'£156,800'},
+  '90d':{wk:['Jan','Feb','Mar','Apr'],rev:[129000,148000,164000,173220],exp:[68000,74000,79000,82100],revP:[105000,118000,131000,143000],ld:['Jan','Feb','Mar','Apr'],leads:[158,174,196,216],leadsP:[120,138,155,170],del:[87,89,91,92],delP:[84,86,88,89],revMTD:'£614,220',revD:'+26% vs prior 90d',finExp:'£303,100',mg:'40%',mgD:'On target',sp:'£2,210',ldt:'744',cpl:'£14.80',rch:'162k',tskDone:'198',badge:'Last 90 days',tskP:'this quarter',mktP:'this quarter',revPr:'£497,000',expPr:'£497,000'}
+};
+  return _D[dS.range] || _D['7d'];
+}
+
+/* === APPLY DATA === */
+function dApplyData(){
+  var d=dGetData();if(!d)return;
+  dSet('fin-rev',d.revMTD);dSet('fin-revd',d.revD);dSet('fin-exp',d.finExp);
+  dSet('fin-mg',d.mg);dSet('fin-mgd',d.mgD);
+  dSet('ov-rev',d.revMTD);dSet('ov-badge',d.badge);dSet('ov-snap',d.badge.replace('Last ',''));
+  dSet('mkt-sp',d.sp);dSet('mkt-ld',d.ldt);dSet('mkt-cpl',d.cpl);dSet('mkt-rch',d.rch);
+  dSet('tsk-done',d.tskDone);dSet('fin-badge',d.badge);dSet('mkt-badge',d.badge);dSet('del-badge',d.badge);
+  /* Overview snapshot extras */
+  if(d.otr){dSet('ov-ontime',d.otr);}
+  if(d.late){var lo=d$id('ov-overdue');if(lo)lo.textContent=d.late+' late';}
+  var tp=d$id('tsk-per');if(tp)tp.textContent=d.tskP;
+  var mp=d$id('mkt-per');if(mp)mp.textContent=d.mktP;
+  var sc=dS.comp;
+  function setComp(id,curr,prior){
+    var e=d$id(id);if(!e)return;
+    if(sc){
+      var cv=parseFloat(curr.replace(/[^0-9.]/g,''));
+      var pv=parseFloat(prior.replace(/[^0-9.]/g,''));
+      var delta=Math.round((cv/pv-1)*100);
+      e.textContent='Prior: '+prior+(delta>0?' (+'+delta+'%)':' ('+delta+'%)');
+      e.style.color=delta>0?'var(--gn)':'var(--rd)';
+    }else{e.textContent='';e.style.color=''}
+  }
+  setComp('fin-rev-c',d.revMTD,d.revPr);
+  setComp('fin-exp-c',d.finExp,d.expPr);
+  setComp('ov-rev-c',d.revMTD,d.revPr);
+  ['ov-leg','mkt-leg','del-leg'].forEach(function(id){var e=d$id(id);if(e)e.style.display=sc?'flex':'none'});
+  var fl=d$id('fin-comp-leg');if(fl)fl.style.display=sc?'flex':'none';
+}
+
+/* === CHARTS === */
+function dgc(){
+  var isDark=document.documentElement.getAttribute('data-theme')==='dark';
+  var cs=getComputedStyle(document.documentElement);
+  function v(n){return cs.getPropertyValue(n).trim()}
+  return{
+    ac:v('--ac')||'#C8421A',bl:v('--bl')||'#1456A0',gn:v('--gn')||'#2A7530',am:v('--am')||'#87590A',
+    ink3:v('--ink3')||'#9A9288',
+    grid:isDark?'rgba(255,255,255,0.06)':'rgba(0,0,0,0.06)',
+    tt:isDark?'rgba(30,27,20,0.95)':'rgba(26,21,16,0.92)'
+  };
+}
+function scales(yFmt){
+  var c=dgc();
+  var fnt={size:10,family:"'DM Sans',system-ui,sans-serif"};
+  return{
+    x:{grid:{display:false},ticks:{color:c.ink3,font:fnt},border:{display:false}},
+    y:{grid:{color:c.grid,drawBorder:false},border:{display:false},ticks:{color:c.ink3,font:fnt,callback:yFmt||undefined}}
+  };
+}
+function ttOpts(c){
+  return{backgroundColor:c.tt,titleColor:'rgba(255,255,255,.95)',bodyColor:'rgba(255,255,255,.75)',cornerRadius:8,padding:10,titleFont:{family:"'DM Sans',system-ui",size:12,weight:'600'},bodyFont:{family:"'DM Mono',monospace",size:12}};
+}
+function dmkBar(id,labels,datasets,yFmt){
+  var ctx=d$id(id);if(!ctx)return null;
+  var c=dgc();
+  var ds=datasets.map(function(d){
+    if(d.line)return{data:d.data,type:'line',borderColor:d.color,backgroundColor:'transparent',borderWidth:1.5,borderDash:[4,3],tension:.4,pointRadius:0,fill:false};
+    return{data:d.data,backgroundColor:d.color,borderRadius:4,borderSkipped:false};
+  });
+  return new Chart(ctx,{type:'bar',data:{labels:labels,datasets:ds},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:ttOpts(c)},scales:scales(yFmt)}});
+}
+function dmkLine(id,labels,datasets,yFmt){
+  var ctx=d$id(id);if(!ctx)return null;
+  var c=dgc();
+  var ds=datasets.map(function(d){
+    return{data:d.data,borderColor:d.color,backgroundColor:'transparent',borderWidth:d.dash?1.5:2.5,borderDash:d.dash?[4,3]:[],tension:.4,pointRadius:d.dash?0:3,pointHoverRadius:5,pointBackgroundColor:d.color,fill:false};
+  });
+  return new Chart(ctx,{type:'line',data:{labels:labels,datasets:ds},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:ttOpts(c)},scales:scales(yFmt)}});
+}
+function dRefreshCharts(){
+  var d=dGetData();
+  function upd(id,labels,ds){var ch=dCI[id];if(!ch)return;ch.data.labels=labels;ds.forEach(function(s,i){if(ch.data.datasets[i])ch.data.datasets[i].data=s});ch.update();}
+  upd('ovC',d.wk,[d.rev,dS.comp?d.revP:[]]);
+  upd('finC',d.wk,[d.rev,d.exp,dS.comp?d.revP:[]]);
+  upd('mktC',d.ld,[d.leads,dS.comp?d.leadsP:[]]);
+  upd('delC',d.wk,[d.del,dS.comp?d.delP:[]]);
+}
+function dIOv(){var d=dGetData();var c=dgc();dCI.ovC=dmkBar('ovC',d.wk,[{data:d.rev,color:c.ac},{data:dS.comp?d.revP:[],color:c.ink3,line:true}],function(v){return'£'+Math.round(v/1000)+'k'});}
+function dIFin(){var d=dGetData();var c=dgc();dCI.finC=dmkBar('finC',d.wk,[{data:d.rev,color:c.ac},{data:d.exp,color:c.bl},{data:dS.comp?d.revP:[],color:c.ac,line:true}],function(v){return'£'+Math.round(v/1000)+'k'});}
+function dITsk(){var c=dgc();dCI.tskC=dmkBar('tskC',['Mon','Tue','Wed','Thu','Fri'],[{data:[3,5,4,4,3],color:c.bl}]);}
+function dIMkt(){var d=dGetData();var c=dgc();dCI.mktC=dmkBar('mktC',d.ld,[{data:d.leads,color:c.bl},{data:dS.comp?d.leadsP:[],color:c.ink3,line:true}]);}
+function dIDel(){var d=dGetData();var c=dgc();dCI.delC=dmkLine('delC',d.wk,[{data:d.del,color:c.gn},{data:dS.comp?d.delP:[],color:c.ink3,dash:true}],function(v){return v+'%'});}
+
+function dRebuildCharts(){
+  Object.keys(dCI).forEach(function(k){if(dCI[k]&&dCI[k].destroy)dCI[k].destroy()});
+  dCI={};
+  var pg=document.querySelector('.pg.on');
+  if(!pg)return;
+  var id=pg.id;
+  var idKey=id.replace(/^d-/,'');
+  var inits={ov:dIOv,fin:dIFin,tsk:dITsk,mkt:dIMkt,del:dIDel};
+  if(inits[idKey]){setTimeout(inits[idKey],50);}
+}
+
+/* === COMPARE === */
+function dToggleComp(){
+  dS.comp=!dS.comp;
+  var b=d$id('cmpbtn');
+  if(b){b.classList.toggle('on',dS.comp);b.setAttribute('aria-pressed',dS.comp?'true':'false')}
+  dApplyData();dRefreshCharts();
+}
+
+/* === DARK MODE === */
+function dToggleDark(){
+  dS.dark=!dS.dark;
+  document.documentElement.setAttribute('data-theme',dS.dark?'dark':'light');
+  var ico=d$id('darkico');
+  if(ico){ico.innerHTML=dS.dark?'<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>':'<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';}
+  var td=d$id('tog-dark');if(td)td.classList.toggle('on',dS.dark);
+  setTimeout(dRebuildCharts,30);
+  try{localStorage.setItem('sd-dark',dS.dark?'1':'0')}catch(e){}
+}
+
+/* === A11Y === */
+function dOpenA11y(){
+  d$id('a11y-ov').classList.add('open');
+  setTimeout(function(){var f=d$id('a11y-dlg').querySelector('button');if(f)f.focus()},50);
+}
+function dCloseA11y(){document.getElementById('d-a11y-ov').classList.remove('open')}
+function dToggleHC(){dS.hc=!dS.hc;document.body.classList.toggle('hc',dS.hc);var t=d$id('tog-hc');if(t)t.classList.toggle('on',dS.hc);try{localStorage.setItem('sd-hc',dS.hc?'1':'0')}catch(e){}}
+function dToggleMotion(){dS.motion=!dS.motion;document.body.classList.toggle('nomotion',!dS.motion);var t=d$id('tog-motion');if(t)t.classList.toggle('on',!dS.motion);try{localStorage.setItem('sd-motion',dS.motion?'1':'0')}catch(e){}}
+function dToggleBigTxt(){dS.bigtxt=!dS.bigtxt;document.body.classList.toggle('bigtxt',dS.bigtxt);var t=d$id('tog-txt');if(t)t.classList.toggle('on',dS.bigtxt);try{localStorage.setItem('sd-bigtxt',dS.bigtxt?'1':'0')}catch(e){}}
+
+/* === NAV DROPDOWN (tablet/mobile) === */
+var SECTION_META={
+  ov:{ico:'&#9635;',label:'Overview'},
+  fin:{ico:'&#128176;',label:'Finance'},
+  tsk:{ico:'&#9989;',label:'Tasks'},
+  mkt:{ico:'&#128227;',label:'Marketing'},
+  ops:{ico:'&#9881;&#65039;',label:'Operations'},
+  std:{ico:'&#128100;',label:'Standups'},
+  del:{ico:'&#128666;',label:'Delivery'}
+};
+
+function dToggleNavDrop(){
+  var drop=d$id('nav-drop');
+  var pill=d$id('nav-pill');
+  var scrim=d$id('nav-drop-scrim');
+  var open=drop.classList.toggle('open');
+  pill.classList.toggle('open',open);
+  pill.setAttribute('aria-expanded',open?'true':'false');
+  scrim.classList.toggle('open',open);
+  if(open){
+    setTimeout(function(){
+      var active=drop.querySelector('.nav-drop-item.on');
+      if(active)active.focus();
+    },50);
+  }
+}
+
+function dCloseNavDrop(){
+  var drop=d$id('nav-drop');
+  var pill=d$id('nav-pill');
+  var scrim=d$id('nav-drop-scrim');
+  drop.classList.remove('open');
+  pill.classList.remove('open');
+  pill.setAttribute('aria-expanded','false');
+  scrim.classList.remove('open');
+}
+
+function dNavDropGo(e,id,el){
+  e.stopPropagation(); // prevent pill click re-triggering
+  // Update dropdown items
+  document.querySelectorAll('.dash-embed .nav-drop-item').forEach(function(i){
+    i.classList.remove('on');
+    i.setAttribute('aria-selected','false');
+  });
+  if(el){el.classList.add('on');el.setAttribute('aria-selected','true')}
+  // Update pill display
+  var meta=SECTION_META[id];
+  if(meta){
+    var ico=d$id('nav-pill-ico');var lbl=d$id('nav-pill-label');
+    if(ico)ico.innerHTML=meta.ico;
+    if(lbl)lbl.textContent=meta.label;
+  }
+  dCloseNavDrop();
+  dGo(id,dQTab(id));
+}
+
+function dSyncNavDrop(id){
+  document.querySelectorAll('.dash-embed .nav-drop-item').forEach(function(i){
+    i.classList.remove('on');
+    i.setAttribute('aria-selected','false');
+  });
+  var active=d$id('nd-'+id);
+  if(active){active.classList.add('on');active.setAttribute('aria-selected','true')}
+  var meta=SECTION_META[id];
+  if(meta){
+    var ico=d$id('nav-pill-ico');var lbl=d$id('nav-pill-label');
+    if(ico)ico.innerHTML=meta.ico;
+    if(lbl)lbl.textContent=meta.label;
+  }
+}
+
+/* === MOBILE MENU === */
+function dOpenMob(){document.getElementById('d-mob-ov').classList.add('open');document.getElementById('d-mobbtn').setAttribute('aria-expanded','true');document.body.style.overflow='hidden';setTimeout(function(){var f=d$id('mob-pnl').querySelector('button');if(f)f.focus()},50);}
+function dCloseMob(){document.getElementById('d-mob-ov').classList.remove('open');document.getElementById('d-mobbtn').setAttribute('aria-expanded','false');document.body.style.overflow='';}
+
+/* === CALENDAR === */
+var dMONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+var dDAYS=['Mo','Tu','We','Th','Fr','Sa','Su'];
+
+function dToggleCal(){
+  var ov=d$id('cal-ov');
+  var open=ov.classList.toggle('open');
+  d$id('calbtn').classList.toggle('on',open);
+  d$id('calbtn').setAttribute('aria-expanded',open?'true':'false');
+  if(open){
+    var now=new Date();dCalSt.year=now.getFullYear();dCalSt.month=now.getMonth();
+    dRenderCal();dPositionCal();
+    setTimeout(function(){var f=d$id('cal-pnl').querySelector('.cal-arr');if(f)f.focus()},50);
+  }
+}
+function dPositionCal(){
+  var btn=d$id('calbtn'),pnl=d$id('cal-pnl');if(!btn||!pnl)return;
+  var br=btn.getBoundingClientRect();
+  var pw=pnl.offsetWidth||310;
+  var left=Math.max(8,br.right-pw);
+  var maxLeft=window.innerWidth-pw-8;
+  pnl.style.top=(br.bottom+6)+'px';
+  pnl.style.left=Math.min(left,maxLeft)+'px';
+}
+function dCalNav(dir){
+  dCalSt.month+=dir;
+  if(dCalSt.month>11){dCalSt.month=0;dCalSt.year++}
+  if(dCalSt.month<0){dCalSt.month=11;dCalSt.year--}
+  dRenderCal();
+}
+function dRenderCal(){
+  dSet('cal-mo',ddMONTHS[dCalSt.month]+' '+dCalSt.year);
+  var grid=d$id('cal-grid');if(!grid)return;
+  var html='';
+  ddDAYS.forEach(function(d){html+='<div class="cal-dow">'+d+'</div>'});
+  var first=new Date(dCalSt.year,dCalSt.month,1);
+  var startDow=(first.getDay()+6)%7;
+  var daysInMonth=new Date(dCalSt.year,dCalSt.month+1,0).getDate();
+  var prevDays=new Date(dCalSt.year,dCalSt.month,0).getDate();
+  var today=new Date();
+  for(var i=startDow-1;i>=0;i--){html+='<button class="cday other dis" aria-hidden="true" tabindex="-1">'+(prevDays-i)+'</button>';}
+  for(var d=1;d<=daysInMonth;d++){
+    var date=new Date(dCalSt.year,dCalSt.month,d);
+    var cls='cday';
+    var ts=date.getTime();
+    var isToday=date.toDateString()===today.toDateString();
+    if(isToday)cls+=' tod';
+    if(dCalSt.start&&dCalSt.end){
+      var s=dCalSt.start.getTime(),e=dCalSt.end.getTime();
+      if(ts===s)cls+=' rstart';
+      else if(ts===e)cls+=' rend';
+      else if(ts>s&&ts<e)cls+=' inr';
+    }else if(dCalSt.start&&ts===dCalSt.start.getTime()){cls+=' rstart';}
+    var label=d+(isToday?' (today)':'');
+    html+='<button class="'+cls+'" onclick="dCalClick('+dCalSt.year+','+dCalSt.month+','+d+')" aria-label="'+label+'">'+d+'</button>';
+  }
+  var cells=startDow+daysInMonth;var rem=cells%7===0?0:7-(cells%7);
+  for(var n=1;n<=rem;n++){html+='<button class="cday other dis" aria-hidden="true" tabindex="-1">'+n+'</button>';}
+  grid.innerHTML=html;
+}
+function dCalClick(y,m,d){
+  var date=new Date(y,m,d);
+  var hint=d$id('cal-hint');
+  if(!dCalSt.picking||(!dCalSt.start&&!dCalSt.end)){
+    dCalSt.start=date;dCalSt.end=null;dCalSt.picking=true;
+    dSet('cal-disp','From: '+dFmtDate(date));
+    if(hint)hint.textContent='Now click an end date';
+  }else{
+    if(date<dCalSt.start){dCalSt.end=dCalSt.start;dCalSt.start=date}
+    else{dCalSt.end=date}
+    dCalSt.picking=false;
+    dSet('cal-disp',dFmtDate(dCalSt.start)+' - '+dFmtDate(dCalSt.end));
+    dSet('cal-label',dFmtDateShort(dCalSt.start)+' - '+dFmtDateShort(dCalSt.end));
+    if(hint)hint.textContent='';
+    dd$id('calbtn').classList.add('on');
+    document.querySelectorAll('.dash-embed .cpre').forEach(function(b){b.classList.remove('on')});
+    document.querySelectorAll('.dash-embed .rbtn').forEach(function(b){b.classList.remove('on');b.setAttribute('aria-pressed','false')});
+    dS.range='custom';
+    dApplyData();dRefreshCharts();
+    dShowToast('Custom date range applied');
+    setTimeout(toggleCal,400);
+  }
+  dRenderCal();
+}
+function dFmtDate(d){return d.getDate()+' '+dMONTHS[d.getMonth()].substr(0,3)+' '+d.getFullYear()}
+function dFmtDateShort(d){return d.getDate()+'/'+(d.getMonth()+1)}
+function dCalPre(key,el){
+  document.querySelectorAll('.dash-embed .cpre').forEach(function(b){b.classList.remove('on')});
+  if(el)el.classList.add('on');
+  dCalSt.start=null;dCalSt.end=null;dCalSt.picking=false;
+  dSet('cal-hint','');dSet('cal-disp','Select a start date');
+  var map={'7d':'7d','30d':'30d','90d':'90d','mtd':'30d','qtd':'90d','ytd':'90d'};
+  var r=map[key]||'30d';
+  dSetR(r,document.querySelector('.dash-embed .hdr .rbtn[onclick*="\''+r+'\'"]'));
+  setTimeout(dToggleCal,300);
+}
+
+/* === ACTIONS === */
+function dDoAct(btn,aiId,msg){
+  btn.textContent=msg+' \u2713';btn.classList.add('done');btn.disabled=true;
+  var item=d$id(aiId);if(item)item.classList.add('faded');
+  dActs.push(msg);
+  var log=d$id('alog');if(log){log.innerHTML='<strong>Actions taken this session:</strong> '+dActs.join(' \u00b7 ');log.classList.add('show')}
+  dShowToast(msg+' \u2713');
+}
+function dMb(btn,msg){btn.textContent=msg+' \u2713';btn.classList.add('done');btn.disabled=true;dShowToast(msg+' \u2713');}
+
+/* === EXPORT === */
+function dExportSection(){
+  dShowToast('Opening print view...');
+  setTimeout(function(){window.print()},300);
+}
+
+/* === REFRESH === */
+function dRefreshAll(){
+  dUpdMin=0;var el=d$id('upd-time');
+  if(el){el.textContent='Refreshing...';setTimeout(function(){el.textContent='Live data - last updated just now';dUpdMin=0},700)}
+  dApplyData();
+  dRebuildCharts();
+  dShowToast('Data refreshed');
+}
+function dUpdateTimestamp(){
+  dUpdMin++;var el=d$id('upd-time');if(!el)return;
+  if(dUpdMin<2)el.textContent='Live data - last updated just now';
+  else if(dUpdMin<60)el.textContent='Live data - updated '+dUpdMin+' min ago';
+  else el.textContent='Live data - updated over an hour ago';
+}
+setInterval(updateTimestamp,60000);
+
+/* === CLOCK === */
+function dTick(){var n=new Date();var t=n.getHours().toString().padStart(2,'0')+':'+n.getMinutes().toString().padStart(2,'0');var el=d$id('clock');if(el)el.textContent=t;}
+dTick();setInterval(tick,1000);
+
+/* === KEYBOARD / FOCUS TRAP === */
+function dGetFocusable(el){return Array.from(el.querySelectorAll('button:not([disabled]):not([tabindex="-1"]),a,[tabindex="0"]'))}
+function dTrapFocus(e,container){
+  var els=dGetFocusable(container);if(!els.length)return;
+  var first=els[0],last=els[els.length-1];
+  if(e.key==='Tab'){
+    if(e.shiftKey){if(document.activeElement===first){e.preventDefault();last.focus()}}
+    else{if(document.activeElement===last){e.preventDefault();first.focus()}}
+  }
+}
+document.addEventListener('keydown',function(e){
+  var calOv=d$id('cal-ov'),a11yOv=d$id('a11y-ov'),mobOv=d$id('mob-ov');
+  if(e.key==='Escape'){
+    if(calOv.classList.contains('open')){dToggleCal();document.getElementById('d-calbtn').focus();return}
+    if(a11yOv.classList.contains('open')){dCloseA11y();return}
+    if(d$id('nav-drop').classList.contains('open')){dCloseNavDrop();document.getElementById('d-nav-pill').focus();return}
+    if(mobOv.classList.contains('open')){dCloseMob();document.getElementById('d-mobbtn').focus();return}
+  }
+  if(calOv.classList.contains('open'))dTrapFocus(e,d$id('cal-pnl'));
+  if(a11yOv.classList.contains('open'))dTrapFocus(e,d$id('a11y-dlg'));
+  if(mobOv.classList.contains('open'))dTrapFocus(e,d$id('mob-pnl'));
+  if(d$id('nav-drop').classList.contains('open'))dTrapFocus(e,d$id('nav-drop'));
+});
+// RAG cards keyboard activation
+document.querySelectorAll('.dash-embed .rag').forEach(function(r){
+  r.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();r.click()}});
+});
+
+/* === PREFERENCES === */
+(function(){
+  try{
+    if(localStorage.getItem('sd-dark')==='1')dToggleDark();
+    if(localStorage.getItem('sd-hc')==='1')dToggleHC();
+    if(localStorage.getItem('sd-motion')==='0')dToggleMotion();
+    if(localStorage.getItem('sd-bigtxt')==='1')dToggleBigTxt();
+  }catch(e){}
+  if(!localStorage.getItem('sd-dark')&&window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)dToggleDark();
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches&&!localStorage.getItem('sd-motion'))dToggleMotion();
+})();
+
+/* === BUSINESS HEALTH SCORE === */
+function dUpdateHealthScore(){
+  var score=75;
+  var arc=document.getElementById('d-health-arc');
+  var num=document.getElementById('d-health-num');
+  var lbl=document.getElementById('d-health-label');
+  if(!arc)return;
+  var circumference=188.5;
+  var offset=circumference-(score/100)*circumference;
+  arc.style.strokeDashoffset=offset;
+  var color=score>=80?'var(--gn)':score>=60?'var(--am)':'var(--rd)';
+  arc.style.stroke=color.replace('var(','').replace(')','');
+  // resolve CSS variable
+  var cs=getComputedStyle(document.documentElement);
+  var colorMap={'--gn':'#2A7530','--am':'#87590A','--rd':'#BF2F1C'};
+  var isDark=document.documentElement.getAttribute('data-theme')==='dark';
+  if(isDark){colorMap={'--gn':'#50C060','--am':'#FFB84A','--rd':'#F05050'};}
+  var rawKey=color.replace('var(','').replace(')','');
+  arc.style.stroke=colorMap[rawKey]||cs.getPropertyValue(rawKey).trim()||'#C8421A';
+  if(num)num.textContent=score;
+  if(lbl)lbl.textContent=score>=80?'Excellent':score>=60?'Good':score>=40?'Fair':'Needs attention';
+}
+
+/* === KEYBOARD SHORTCUTS === */
+document.addEventListener('keydown',function(e){
+  // Don't fire when typing in inputs
+  if(e.target.tagName==='INPUT'||e.target.tagName==='TEXTAREA')return;
+  if(e.metaKey||e.ctrlKey||e.altKey)return;
+  var shortcuts={'1':'ov','2':'fin','3':'tsk','4':'mkt','5':'ops','6':'std','7':'del'};
+  if(shortcuts[e.key]){
+    var id=shortcuts[e.key];
+    var tab=dQTab(id);
+    dGo(id,tab);
+    dSyncNavDrop(id);
+    e.preventDefault();
+  }
+  if(e.key==='d'){dToggleDark();e.preventDefault();}
+});
+
+/* === INIT === */
+dApplyData();
+setTimeout(dIOv,100);
+setTimeout(dUpdateHealthScore,200);
+
+
+/* ================================================================
+   SITE JS - navigation, booking, persona, fullscreen
+================================================================ */
+
+/* Scroll progress */
+window.addEventListener('scroll', function(){
+  var p = document.getElementById('scroll-prog');
+  if (!p) return;
+  var s = document.documentElement.scrollTop;
+  var t = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  p.style.width = (t > 0 ? Math.round((s/t)*100) : 0) + '%';
+}, {passive: true});
+
+/* Site dark mode - syncs with dashboard */
+var siteDark = false;
+function toggleSiteDark() {
+  siteDark = !siteDark;
+  document.documentElement.setAttribute('data-theme', siteDark ? 'dark' : 'light');
+  updateDarkIcons();
+  /* Sync with dashboard */
+  if (dS.dark !== siteDark) { dToggleDark(); } else {
+    document.documentElement.setAttribute('data-theme', siteDark ? 'dark' : 'light');
+  }
+  try { localStorage.setItem('sd-site-dark', siteDark ? '1' : '0'); } catch(e) {}
+}
+function updateDarkIcons() {
+  var sunPath = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+  var moonPath = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+  var path = siteDark ? sunPath : moonPath;
+  ['site-dark-ico', 'd-darkico'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.innerHTML = path;
+  });
+  var dtl = document.getElementById('dark-tog-lbl');
+  if (dtl) dtl.textContent = siteDark ? 'On' : 'Off';
+}
+
+/* Mobile site nav */
+function openSiteNav() {
+  document.getElementById('mob-nav-overlay').classList.add('open');
+  document.getElementById('snav-mob-btn').setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+function closeSiteNav() {
+  document.getElementById('mob-nav-overlay').classList.remove('open');
+  document.getElementById('snav-mob-btn').setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+/* Booking modal */
+function openBooking() {
+  document.getElementById('booking-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  setTimeout(function() {
+    var f = document.getElementById('bm-name');
+    if (f) f.focus();
+  }, 50);
+}
+function closeBooking() {
+  document.getElementById('booking-modal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('booking-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeBooking();
+});
+function submitBooking() {
+  var name = document.getElementById('bm-name').value.trim();
+  var email = document.getElementById('bm-email').value.trim();
+  if (!name) { document.getElementById('bm-name').focus(); document.getElementById('bm-name').style.borderColor = '#C8421A'; return; }
+  if (!email || !email.includes('@')) { document.getElementById('bm-email').focus(); document.getElementById('bm-email').style.borderColor = '#C8421A'; return; }
+  /* Hide form, show success */
+  var formEl = document.getElementById('bm-form-wrap');
+  var successEl = document.getElementById('bm-success');
+  if (formEl) formEl.style.display = 'none';
+  if (successEl) successEl.classList.add('show');
+}
+
+/* Full screen dashboard */
+/* fullscreen fixed */ function openFullscreen() {
+  var fs = document.getElementById('dash-fullscreen');
+  var inner = document.getElementById('dash-fs-inner');
+  var embed = document.getElementById('dash-embed');
+  inner.innerHTML = '';
+  var clone = embed.cloneNode(true);
+  clone.id = 'dash-embed-fs';
+  /* Suffix all IDs to avoid conflicts */
+  clone.querySelectorAll('[id]').forEach(function(el){ el.id = el.id + '-fs'; });
+  inner.appendChild(clone);
+  fs.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  /* Re-render charts in fullscreen after paint */
+  setTimeout(function(){
+    var d = dGetData(); var cc = dgc();
+    var activePg = clone.querySelector('.pg.on');
+    var secId = activePg ? activePg.id.replace(/-fs$/,'').replace(/^d-/,'') : 'ov';
+    var opts = {responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}}};
+    var xScale = {grid:{display:false},ticks:{color:cc.ink3,font:{size:10}}};
+    var yScale = function(cb){ return {grid:{color:cc.grid,drawBorder:false},border:{display:false},ticks:{color:cc.ink3,font:{size:10},callback:cb}}; };
+    var tt = {backgroundColor:cc.tt,titleColor:'rgba(255,255,255,.9)',bodyColor:'rgba(255,255,255,.7)',cornerRadius:8,padding:10};
+    function mkFsBar(id,labels,data,color,yFmt){
+      var ctx = clone.querySelector('#'+id+'-fs');
+      if(!ctx) return;
+      new Chart(ctx,{type:'bar',data:{labels:labels,datasets:[{data:data,backgroundColor:color,borderRadius:4,borderSkipped:false}]},options:Object.assign({},opts,{plugins:{legend:{display:false},tooltip:{callbacks:{label:function(x){return yFmt?yFmt(x.raw):x.raw}}}},scales:{x:xScale,y:yScale(yFmt)}})});
+    }
+    function mkFsLine(id,labels,data,color,yFmt){
+      var ctx = clone.querySelector('#'+id+'-fs');
+      if(!ctx) return;
+      new Chart(ctx,{type:'line',data:{labels:labels,datasets:[{data:data,borderColor:color,borderWidth:2.5,tension:.4,pointRadius:3,pointBackgroundColor:color,fill:false}]},options:Object.assign({},opts,{plugins:{legend:{display:false}},scales:{x:xScale,y:yScale(yFmt)}})});
+    }
+    var fmtK = function(v){return'£'+Math.round(v/1000)+'k';};
+    var fmtPct = function(v){return v+'%';};
+    if(secId==='ov')  mkFsBar('d-ovC',d.wk,d.rev,cc.ac,fmtK);
+    if(secId==='fin'){ mkFsBar('d-finC',d.wk,d.rev,cc.ac,fmtK); }
+    if(secId==='mkt') mkFsBar('d-mktC',d.ld,d.leads,cc.bl,null);
+    if(secId==='del') mkFsLine('d-delC',d.wk,d.del,cc.gn,fmtPct);
+    if(secId==='tsk') mkFsBar('d-tskC',['Mon','Tue','Wed','Thu','Fri'],[3,5,4,4,3],cc.bl,null);
+  }, 150);
+}
+
+function closeFullscreen() {
+  document.getElementById('dash-fullscreen').classList.remove('open');
+  document.getElementById('dash-fs-inner').innerHTML = '';
+  document.body.style.overflow = '';
+}
+
+/* Global escape key */
+document.addEventListener('keydown', function(e) {
+  if (e.key !== 'Escape') return;
+  if (document.getElementById('dash-fullscreen').classList.contains('open')) { closeFullscreen(); return; }
+  if (document.getElementById('booking-modal').classList.contains('open')) { closeBooking(); return; }
+  if (document.getElementById('mob-nav-overlay').classList.contains('open')) { closeSiteNav(); return; }
+  /* Dashboard modals */
+  var calOv = document.getElementById('d-cal-ov');
+  var a11yOv = document.getElementById('d-a11y-ov');
+  var mobOv = document.getElementById('d-mob-ov');
+  var navDrop = document.getElementById('d-nav-drop');
+  if (calOv && calOv.classList.contains('open')) { dToggleCal(); return; }
+  if (a11yOv && a11yOv.classList.contains('open')) { dCloseA11y(); return; }
+  if (navDrop && navDrop.classList.contains('open')) { dCloseNavDrop(); return; }
+  if (mobOv && mobOv.classList.contains('open')) { dCloseMob(); return; }
+});
+
+/* Smooth scroll */
+document.querySelectorAll('a[href^="#"]').forEach(function(a) {
+  a.addEventListener('click', function(e) {
+    var id = this.getAttribute('href');
+    if (id === '#') return;
+    var target = document.querySelector(id);
+    if (target) { e.preventDefault(); target.scrollIntoView({behavior: 'smooth', block: 'start'}); }
+  });
+});
+
+/* FAQ */
+function toggleFaq(btn) {
+  var a = btn.nextElementSibling;
+  var wasOpen = btn.classList.contains('open');
+  document.querySelectorAll('.faq-q').forEach(function(b) { b.classList.remove('open'); b.setAttribute('aria-expanded', 'false'); });
+  document.querySelectorAll('.faq-a').forEach(function(x) { x.classList.remove('open'); });
+  if (!wasOpen) { btn.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); a.classList.add('open'); }
+}
+
+/* ================================================================
+   PERSONAS
+================================================================ */
+var PERSONAS = {
+  retail: {
+    name: 'E-commerce', company: 'Bloom Supply Co.',
+    url: 'app.simpledash.co.uk - Bloom Supply Co.',
+    hint: 'Showing: e-commerce / retail business data',
+    data: {
+      '7d':  { wk:['W1','W2','W3','W4','W5','W6','W7','W8'], rev:[9200,11400,8900,12100,13800,10500,14200,16200], exp:[5100,5400,4900,5800,5600,5200,5900,5700], revP:[8100,9800,7900,10200,11900,9200,12500,14800], ld:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], leads:[7,9,11,8,14,6,8], leadsP:[5,7,8,7,10,5,6], del:[91,88,90,93,89,92,94,92], delP:[88,86,89,90,87,89,91,90], revMTD:'£47,320', revD:'+18% vs last month', finExp:'£21,100', mg:'44%', mgD:'+3pts vs target', sp:'£184', ldt:'63', cpl:'£11.40', rch:'14.2k', tskDone:'19', badge:'Last 7 days', tskP:'this week', mktP:'today', revPr:'£39,900', expPr:'£44,100', otr:'92%', transit:'28', late:'3' },
+      '30d': { wk:['Wk1','Wk2','Wk3','Wk4'], rev:[38200,42100,45600,47320], exp:[19800,21000,20200,21100], revP:[33000,36500,40100,43200], ld:['Wk1','Wk2','Wk3','Wk4'], leads:[41,58,54,63], leadsP:[32,44,48,52], del:[89,91,90,92], delP:[86,88,87,90], revMTD:'£173,220', revD:'+12% vs prior 30d', finExp:'£82,100', mg:'42%', mgD:'+1pt vs target', sp:'£740', ldt:'216', cpl:'£13.20', rch:'52.8k', tskDone:'67', badge:'Last 30 days', tskP:'this month', mktP:'this month', revPr:'£152,800', expPr:'£156,800', otr:'91%', transit:'112', late:'8' },
+      '90d': { wk:['Jan','Feb','Mar','Apr'], rev:[129000,148000,164000,173220], exp:[68000,74000,79000,82100], revP:[105000,118000,131000,143000], ld:['Jan','Feb','Mar','Apr'], leads:[158,174,196,216], leadsP:[120,138,155,170], del:[87,89,91,92], delP:[84,86,88,89], revMTD:'£614,220', revD:'+26% vs prior 90d', finExp:'£303,100', mg:'40%', mgD:'On target', sp:'£2,210', ldt:'744', cpl:'£14.80', rch:'162k', tskDone:'198', badge:'Last 90 days', tskP:'this quarter', mktP:'this quarter', revPr:'£497,000', expPr:'£497,000', otr:'90%', transit:'420', late:'28' }
+    },
+    ai: [
+      'Hartley Co. invoice is 21 days overdue at £3,200. A call today gives a 73% chance of same-week settlement.',
+      'Meta Retarget CPL is 2.5x your average (£8.25 vs £3.36). 84% audience overlap with Meta Spring - pausing saves ~£230/week.',
+      'SKU-2204 has 3 days of stock remaining. Reorder lead time is 5 days - act today to avoid a stockout.'
+    ],
+    health: { score: 75, label: 'Good', sub: '3 items need attention. Finance and delivery on track.' },
+    tasks: { proj: ['Website relaunch', 'Q2 ops review', 'New hire setup'], pct: [72, 45, 90] },
+    finInsight: 'Call Hartley Co. today - 73% chance of same-week payment vs 41% by email. Worth £3,200 in cash flow.',
+    mktInsight: 'Meta Retarget CPL is 2.5x your average. Audience overlaps 84% with Meta Spring - pausing saves ~£230/week.',
+    delInsight: '3 customers not notified of delays. Proactive updates cut complaint rate by ~60%.',
+    tskInsight: 'James is blocking 2 tasks. A 15-minute sync today unblocks both before deadline.',
+    opsInsight: 'SKU-2204 reorder is already overdue. Unassigned tickets breach SLA in 2 hours.'
+  },
+  agency: {
+    name: 'Marketing Agency', company: 'Oakfield Group',
+    url: 'app.simpledash.co.uk - Oakfield Group',
+    hint: 'Showing: marketing agency business data',
+    data: {
+      '7d':  { wk:['W1','W2','W3','W4','W5','W6','W7','W8'], rev:[14200,18900,16400,22100,19800,21400,24600,26800], exp:[8200,9100,8800,10200,9600,9900,11200,12100], revP:[12400,16200,14800,19400,17900,19200,22100,24500], ld:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], leads:[12,15,18,14,22,8,11], leadsP:[9,12,14,11,18,6,9], del:[95,92,94,96,91,94,97,95], delP:[91,89,92,93,88,91,94,92], revMTD:'£123,700', revD:'+21% vs last month', finExp:'£61,500', mg:'50%', mgD:'+5pts vs target', sp:'£3,200', ldt:'100', cpl:'£32.00', rch:'48.6k', tskDone:'34', badge:'Last 7 days', tskP:'this week', mktP:'today', revPr:'£102,200', expPr:'£111,200', otr:'96%', transit:'18', late:'1' },
+      '30d': { wk:['Wk1','Wk2','Wk3','Wk4'], rev:[98000,112000,119000,123700], exp:[51000,58000,60000,61500], revP:[82000,95000,101000,108000], ld:['Wk1','Wk2','Wk3','Wk4'], leads:[68,82,91,100], leadsP:[55,70,78,88], del:[93,94,95,96], delP:[89,91,93,94], revMTD:'£452,700', revD:'+18% vs prior 30d', finExp:'£230,500', mg:'49%', mgD:'+4pts vs target', sp:'£12,800', ldt:'341', cpl:'£37.50', rch:'189k', tskDone:'112', badge:'Last 30 days', tskP:'this month', mktP:'this month', revPr:'£383,600', expPr:'£415,500', otr:'95%', transit:'74', late:'4' },
+      '90d': { wk:['Jan','Feb','Mar','Apr'], rev:[390000,418000,441000,453000], exp:[198000,211000,224000,231000], revP:[340000,365000,388000,412000], ld:['Jan','Feb','Mar','Apr'], leads:[280,310,330,341], leadsP:[240,265,290,310], del:[92,93,94,96], delP:[89,90,92,94], revMTD:'£1,702,000', revD:'+14% vs prior 90d', finExp:'£864,000', mg:'49%', mgD:'On target', sp:'£48,000', ldt:'1,261', cpl:'£38.10', rch:'724k', tskDone:'380', badge:'Last 90 days', tskP:'this quarter', mktP:'this quarter', revPr:'£1,502,000', expPr:'£1,554,000', otr:'95%', transit:'280', late:'14' }
+    },
+    ai: [
+      'Marchfield Corp retainer (£4,800/month) is up for renewal in 8 days. No renewal conversation started yet.',
+      'Google Ads spend is up 34% this week with only 12% more lead volume - CPL is rising. Review budget allocation.',
+      '3 client reports are overdue today. Auto-send is off - manual approval needed before 5pm.'
+    ],
+    health: { score: 82, label: 'Good', sub: '2 items flagged. Client pipeline and revenue on track.' },
+    tasks: { proj: ['Marchfield rebrand', 'Q2 content calendar', 'New hire onboarding'], pct: [88, 60, 95] },
+    finInsight: 'Marchfield retainer renewal in 8 days at £4,800/month. Start the conversation now - renewal rate drops 40% after expiry.',
+    mktInsight: 'Google Ads CPL rising due to a 34% spend increase with only 12% lead uplift. Redistribute budget to top performers.',
+    delInsight: '3 client reports overdue. Auto-approve is off. Sending now preserves SLA and avoids client escalation.',
+    tskInsight: 'Q2 content calendar is only 60% complete with 4 days to deadline. Reassign 2 tasks from the rebrand team.',
+    opsInsight: 'Team utilisation at 94% - above optimal. 2 project timelines at risk if no capacity added this week.'
+  },
+  logistics: {
+    name: 'Logistics', company: 'Bright Logistics',
+    url: 'app.simpledash.co.uk - Bright Logistics',
+    hint: 'Showing: logistics / delivery business data',
+    data: {
+      '7d':  { wk:['W1','W2','W3','W4','W5','W6','W7','W8'], rev:[32400,38900,35200,41800,44100,39600,46800,49200], exp:[22100,25800,24600,27900,28400,26100,29800,31200], revP:[29800,35400,32100,38600,40200,36400,42900,45600], ld:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], leads:[18,22,19,25,28,12,16], leadsP:[15,18,16,21,24,10,13], del:[94,91,93,95,90,94,96,93], delP:[91,88,90,92,87,91,93,90], revMTD:'£249,600', revD:'+11% vs last month', finExp:'£188,300', mg:'25%', mgD:'+2pts vs target', sp:'£4,800', ldt:'140', cpl:'£34.30', rch:'28.4k', tskDone:'28', badge:'Last 7 days', tskP:'this week', mktP:'today', revPr:'£224,900', expPr:'£225,900', otr:'93%', transit:'84', late:'7' },
+      '30d': { wk:['Wk1','Wk2','Wk3','Wk4'], rev:[198000,218000,235000,250000], exp:[152000,165000,177000,188000], revP:[178000,196000,212000,226000], ld:['Wk1','Wk2','Wk3','Wk4'], leads:[92,108,126,140], leadsP:[78,92,110,124], del:[92,93,94,95], delP:[88,90,92,93], revMTD:'£901,000', revD:'+15% vs prior 30d', finExp:'£682,000', mg:'24%', mgD:'+1pt vs target', sp:'£19,200', ldt:'466', cpl:'£41.20', rch:'112k', tskDone:'98', badge:'Last 30 days', tskP:'this month', mktP:'this month', revPr:'£783,000', expPr:'£784,000', otr:'94%', transit:'320', late:'22' },
+      '90d': { wk:['Jan','Feb','Mar','Apr'], rev:[720000,792000,858000,901000], exp:[556000,612000,659000,682000], revP:[648000,714000,774000,812000], ld:['Jan','Feb','Mar','Apr'], leads:[380,420,450,466], leadsP:[320,360,400,432], del:[90,92,94,95], delP:[87,89,91,93], revMTD:'£3,271,000', revD:'+12% vs prior 90d', finExp:'£2,509,000', mg:'23%', mgD:'On target', sp:'£72,000', ldt:'1,716', cpl:'£41.96', rch:'420k', tskDone:'350', badge:'Last 90 days', tskP:'this quarter', mktP:'this quarter', revPr:'£2,924,000', expPr:'£2,926,000', otr:'94%', transit:'1,280', late:'84' }
+    },
+    ai: [
+      '7 deliveries are 2+ hours late in the M25 zone. Customers not yet notified - auto-alerts are paused.',
+      'Vehicle FL-2249 has a service overdue by 340 miles. It cannot legally take bookings after today.',
+      'Q1 fuel reconciliation is 3 days overdue. Finance flagged £12,400 in unallocated spend.'
+    ],
+    health: { score: 68, label: 'Fair', sub: '3 operational issues need attention. Revenue on track.' },
+    tasks: { proj: ['Fleet compliance audit', 'Warehouse expansion', 'Driver training rollout'], pct: [55, 30, 78] },
+    finInsight: 'Q1 fuel reconciliation overdue 3 days. £12,400 unallocated spend blocking month-end close.',
+    mktInsight: 'Google Search CPL at £34 vs £28 target. Bid adjustments on 3 underperforming keywords could recover 15% efficiency.',
+    delInsight: '7 customers in M25 zone not notified. Proactive updates cut chargeback rate by ~55% in past incidents.',
+    tskInsight: 'Fleet compliance audit is 55% done with inspection due in 6 days. 3 vehicles still need sign-off.',
+    opsInsight: 'Vehicle FL-2249 is legally non-operational after today without a service. Book immediately or reassign its 4 scheduled jobs.'
+  }
+};
+
+var currentPersona = 'retail';
+
+function switchPersona(key, btn) {
+  currentPersona = key;
+  document.querySelectorAll('.ptab').forEach(function(b) { b.classList.remove('on'); b.setAttribute('aria-pressed', 'false'); });
+  if (btn) { btn.classList.add('on'); btn.setAttribute('aria-pressed', 'true'); }
+  var p = PERSONAS[key];
+  if (!p) return;
+  /* Update hint and URL bar */
+  var hint = document.getElementById('persona-hint');
+  if (hint) hint.textContent = p.hint;
+  var url = document.getElementById('dc-url');
+  if (url) url.textContent = p.url;
+  var fslbl = document.getElementById('fs-persona-lbl');
+  if (fslbl) fslbl.textContent = p.name;
+  /* Update AI brief */
+  if (p.ai && p.ai.length >= 3) {
+    function setAI(id, txt) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var parts = txt.split('. ');
+      el.innerHTML = '<strong>' + parts[0] + '.</strong> ' + parts.slice(1).join('. ');
+    }
+    setAI('d-ai1-txt', p.ai[0]);
+    setAI('d-ai2-txt', p.ai[1]);
+    setAI('d-ai3-txt', p.ai[2]);
+  }
+  /* Reset action buttons */
+  document.querySelectorAll('#dash-embed .ai-item').forEach(function(i) { i.classList.remove('faded'); });
+  document.querySelectorAll('#dash-embed .actbtn').forEach(function(b) {
+    b.classList.remove('done'); b.disabled = false;
+    var orig = b.getAttribute('data-orig');
+    if (orig) b.textContent = orig;
+  });
+  var al = document.getElementById('d-alog');
+  if (al) { al.classList.remove('show'); al.innerHTML = ''; }
+  /* Update health score */
+  if (p.health) dUpdateHealthScore(p.health.score, p.health.label, p.health.sub);
+  /* Update tasks */
+  if (p.tasks) {
+    ['d-proj1-name','d-proj2-name','d-proj3-name'].forEach(function(id, i) {
+      var e = document.getElementById(id); if (e && p.tasks.proj[i]) e.textContent = p.tasks.proj[i];
+    });
+    ['d-proj1-pct','d-proj2-pct','d-proj3-pct'].forEach(function(id, i) {
+      var e = document.getElementById(id); if (e && p.tasks.pct[i] !== undefined) e.textContent = p.tasks.pct[i] + '%';
+    });
+    ['d-proj1-bar','d-proj2-bar','d-proj3-bar'].forEach(function(id, i) {
+      var e = document.getElementById(id); if (e && p.tasks.pct[i] !== undefined) e.style.width = p.tasks.pct[i] + '%';
+    });
+  }
+  /* Update AI insights */
+  ['fin','mkt','del','tsk','ops'].forEach(function(sec) {
+    var el = document.getElementById('d-' + sec + '-ai');
+    if (el && p[sec + 'Insight']) el.textContent = p[sec + 'Insight'];
+  });
+  /* Refresh data and charts */
+  dApplyData();
+  dRebuildCharts();
+}
+
+/* Restore preferences on load */
+(function(){
+  try {
+    var dark = localStorage.getItem('sd-dark') === '1' || localStorage.getItem('sd-site-dark') === '1';
+    if (!dark && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) dark = true;
+    if (dark) { siteDark = true; dS.dark = true; document.documentElement.setAttribute('data-theme', 'dark'); updateDarkIcons(); }
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) dToggleMotion();
+  } catch(e) {}
+  /* Store original action button text for persona reset */
+  document.querySelectorAll('#dash-embed .actbtn').forEach(function(b) {
+    b.setAttribute('data-orig', b.textContent);
+  });
+  /* Init dashboard */
+  dApplyData();
+  setTimeout(dIOv, 100);
+  setTimeout(function() { dUpdateHealthScore(); }, 200);
+  /* Init dark toggle state */
+  updateDarkIcons();
+})();
+
+
+/* ================================================================
+   DEMO CUSTOMISER
+================================================================ */
+var custActive = false;
+var custData = {}; // current overrides
+
+function openCust() {
+  document.getElementById('cust-panel').classList.add('open');
+  document.getElementById('cust-scrim').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  custActive = true;
+  /* Pre-fill with current persona defaults */
+  var p = PERSONAS[currentPersona];
+  var d = p && p.data && p.data['7d'] ? p.data['7d'] : {};
+  var companyEl = document.getElementById('cust-company');
+  var industryEl = document.getElementById('cust-industry');
+  var revEl = document.getElementById('cust-rev');
+  var marginEl = document.getElementById('cust-margin');
+  if (companyEl && !companyEl.value) companyEl.value = p ? p.company.replace(' (Demo)','') : '';
+  if (industryEl) industryEl.value = currentPersona;
+  if (revEl && !revEl.value) revEl.value = d.revMTD || '';
+  if (marginEl && !marginEl.value) marginEl.value = d.mg || '';
+  /* Live preview on input */
+  ['cust-company','cust-rev','cust-margin','cust-team','cust-tools','cust-leads'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('input', updateCustPreview);
+  });
+  document.getElementById('cust-industry').addEventListener('change', updateCustPreview);
+  updateCustPreview();
+  setTimeout(function(){
+    var f = document.getElementById('cust-company');
+    if (f) f.focus();
+  }, 50);
+}
+
+function closeCust() {
+  document.getElementById('cust-panel').classList.remove('open');
+  document.getElementById('cust-scrim').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function updateCustPreview() {
+  var company = document.getElementById('cust-company').value.trim();
+  var rev = document.getElementById('cust-rev').value.trim();
+  var margin = document.getElementById('cust-margin').value.trim();
+  var team = document.getElementById('cust-team').value.trim();
+  var tools = document.getElementById('cust-tools').value.trim();
+  var leads = document.getElementById('cust-leads').value.trim();
+  var preview = document.getElementById('cust-preview');
+  var items = document.getElementById('cust-preview-items');
+  if (!company && !rev && !margin && !team && !tools && !leads) {
+    preview.style.display = 'none';
+    return;
+  }
+  preview.style.display = 'block';
+  var rows = [];
+  if (company) rows.push(['Company', company]);
+  if (rev) rows.push(['Revenue MTD', rev]);
+  if (margin) rows.push(['Margin', margin]);
+  if (team) rows.push(['Team size', team + ' people']);
+  if (tools) rows.push(['Tools', tools + ' connected']);
+  if (leads) rows.push(['Monthly leads', leads]);
+  items.innerHTML = rows.map(function(r){
+    return '<div class="cust-preview-item"><span class="cust-preview-key">' + r[0] + '</span><span class="cust-preview-val">' + r[1] + '</span></div>';
+  }).join('');
+}
+
+function applyCust() {
+  var company = document.getElementById('cust-company').value.trim();
+  var industry = document.getElementById('cust-industry').value;
+  var rev = document.getElementById('cust-rev').value.trim();
+  var margin = document.getElementById('cust-margin').value.trim();
+  var team = document.getElementById('cust-team').value.trim();
+  var tools = document.getElementById('cust-tools').value.trim();
+  var leads = document.getElementById('cust-leads').value.trim();
+
+  /* Switch persona if industry changed */
+  if (industry !== currentPersona) {
+    var tabs = document.querySelectorAll('.ptab');
+    var targetTab = null;
+    tabs.forEach(function(t){
+      if (t.getAttribute('onclick') && t.getAttribute('onclick').indexOf("'"+industry+"'") !== -1) targetTab = t;
+    });
+    switchPersona(industry, targetTab);
+  }
+
+  /* Apply company name */
+  if (company) {
+    var urlEl = document.getElementById('dc-url');
+    if (urlEl) urlEl.textContent = 'app.simpledash.co.uk - ' + company;
+    var hintEl = document.getElementById('persona-hint');
+    if (hintEl) hintEl.textContent = 'Showing data for: ' + company;
+    /* Update AI brief title */
+    var aiTitle = document.getElementById('d-ai-title');
+    if (aiTitle) aiTitle.textContent = 'AI morning brief for ' + company;
+  }
+
+  /* Apply revenue */
+  if (rev) {
+    /* Update overview and finance revenue display */
+    var revEls = ['d-ov-rev','d-fin-rev'];
+    revEls.forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) el.textContent = rev;
+    });
+    /* Generate scaled chart data from revenue */
+    var revNum = parseFloat(rev.replace(/[^0-9.]/g,'')) || 0;
+    if (revNum > 0) {
+      /* Scale the chart bars to reflect the entered revenue */
+      var p = PERSONAS[currentPersona];
+      var d7 = p && p.data && p.data['7d'];
+      if (d7 && d7.rev && d7.rev.length) {
+        var baseTotal = d7.rev.reduce(function(a,b){return a+b;}, 0);
+        var scale = (revNum * 1000) / baseTotal; // crude scale - revNum is monthly in thousands
+        custData.scaledRev = d7.rev.map(function(v){ return Math.round(v * scale); });
+      }
+    }
+  }
+
+  /* Apply margin */
+  if (margin) {
+    var mgEl = document.getElementById('d-fin-mg');
+    if (mgEl) mgEl.textContent = margin;
+  }
+
+  /* Apply leads to marketing */
+  if (leads) {
+    var leadsNum = parseInt(leads);
+    if (!isNaN(leadsNum)) {
+      var leadsEl = document.getElementById('d-mkt-ld');
+      if (leadsEl) leadsEl.textContent = leadsNum.toLocaleString();
+      /* Recalc CPL if we have spend */
+      var p = PERSONAS[currentPersona];
+      var d7 = p && p.data && p.data['7d'];
+      if (d7 && d7.sp) {
+        var spendNum = parseFloat(d7.sp.replace(/[^0-9.]/g,'')) || 0;
+        if (spendNum > 0 && leadsNum > 0) {
+          var cpl = (spendNum / leadsNum * 30).toFixed(2);
+          var cplEl = document.getElementById('d-mkt-cpl');
+          if (cplEl) cplEl.textContent = '£' + cpl;
+        }
+      }
+    }
+  }
+
+  /* Store overrides */
+  custData = { company:company, industry:industry, rev:rev, margin:margin, team:team, tools:tools, leads:leads };
+
+  /* Flash confirmation */
+  dShowToast('Dashboard updated for ' + (company || 'your prospect') + ' ✓');
+  closeCust();
+
+  /* Rebuild charts with scaled data if applicable */
+  if (custData.scaledRev) {
+    setTimeout(dRebuildCharts, 100);
+  }
+}
+
+function resetCust() {
+  custData = {};
+  /* Clear inputs */
+  ['cust-company','cust-rev','cust-margin','cust-team','cust-tools','cust-leads'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+  /* Re-apply original persona data */
+  switchPersona(currentPersona, null);
+  dShowToast('Demo reset to original data');
+  closeCust();
+}
+
+/* Add Escape key support for cust panel */
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.getElementById('cust-panel').classList.contains('open')) {
+    closeCust();
+  }
+});
+
+</script>
+</body>
+</html>
